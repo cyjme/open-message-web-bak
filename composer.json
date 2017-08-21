@@ -23,7 +23,7 @@
             "Openmessage\\User\\": "code/dev/app/openmessage/user/src/",
             "Openmessage\\MassUser\\": "code/dev/app/openmessage/massUser/src/",
             "Openmessage\\Auth\\": "code/dev/app/openmessage/auth/src/",
-            "Openmessage\\Startup\\": "code/dev/app/openmessage/Startup/src/",
+            "Openmessage\\Startup\\": "code/dev/app/openmessage/startup/src/",
             "Openmessage\\MassHome\\": "code/dev/app/openmessage/massHome/src/",
             "Openmessage\\Msg\\": "code/dev/app/openmessage/msg/src/"
         },
