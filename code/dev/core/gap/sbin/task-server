@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+$baseDir = realpath(__DIR__ . '/../../../../');
+require $baseDir . '/vendor/autoload.php';
+
+obj(new \Gap\Third\Swoole\App\ServerApp($baseDir))->run();
+
+/*
+\Gap\Bootstrap\Autoload::init([
+    'baseDir' => $baseDir,
+    'loader' => $loader,
+    'debug' => true,
+    'type' => 'task-server'
+]);
+
+$taskServerConfig = config()->getConfig('task.server');
+
+$host = $taskServerConfig->get('host');
+$port = $taskServerConfig->get('port');
+$logFile = $taskServerConfig->get('logFile');
+$debug = config()->get('debug');
+$debugFile = $debug ? $taskServerConfig->get('debugFile') : '';
+
+\Tec\Swoole\Task\Server::run($host, $port, $logFile, $debugFile);
+ */
+
+//\Gap\App\AppFactory::taskServer()->run();

@@ -1,0 +1,37 @@
+<header class="header">
+    <div class="header-wrap">
+        <a href="<?php echo $this->routeGet('massHome')?>" class="logo"><i class="icon icon-logo"></i></a>
+        <ul class="header-menu">
+            <?php foreach ($this->menu as $key => $item) { ?>
+            <?php $class = ($key == $this->selectedMenu) ? $key . ' active' : $key; ?>
+                <li class="<?php echo $class; ?>">
+                    <a href="<?php echo $this->routeUrl($item['route']); ?>">
+                        <?php echo $this->trans($item['title']); ?>
+                    </a>
+                </li>
+            <?php } ?>
+        </ul>
+        <?php if (current_uid()) { ?>
+            <div class="header-user float-right popup">
+                <img width="28" src="<?php echo $this->staticUrl('/img/user-avt-default.webp'); ?>" alt="">
+                <span><?php echo current_uname(); ?></span>
+                <ul class="popup-content right">
+                    <li>
+                        <a href="<?php echo $this->routeGet('fetchMassUser'); ?>"><?php echo $this->trans('profile'); ?></a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->routeGet('logout'); ?>"><?php echo $this->trans('logout'); ?></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="header-user float-right">
+                <span>Message <span id="messageNumber">0</span></span>
+            </div>
+        <?php } else { ?>
+            <div class="sign-wrap float-right">
+                <a target="_blank" href="<?php echo $this->routeGet('oauthLogin'); ?>"><?php echo $this->trans('Login'); ?></a> |
+                <a href="<?php echo $this->routeGet('oauthReg');?>"><?php echo $this->trans('Reg'); ?></a>
+            </div>
+        <?php } ?>
+    </div>
+</header>

@@ -1,0 +1,25 @@
+<div class="page-header-fixed clearfix">
+    <div class="logo float-left">
+        <a href="<?php echo $this->routeUrl('home'); ?>">
+            <i class="icon icon-logo"></i>
+        </a>
+    </div>
+
+<?php if ($this->subTitle) { ?>
+    <div class="float-left">
+        <?php if ($this->subUrl) { ?>
+        <a href="<?php echo $this->subUrl; ?>">
+            <?php echo $this->subTitle; ?>
+        </a>
+        <?php } else { ?>
+            <?php echo $this->subTitle; ?>
+        <?php } ?>
+    </div>
+<?php } ?>
+    <div class="float-right">
+        <a href="<?php echo $this->routeUrl('logout'); ?>">
+            <?php echo $this->trans('logout'); ?>
+        </a>
+    </div>
+</div>
+<div class="page-header"></div>

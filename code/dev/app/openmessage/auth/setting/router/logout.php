@@ -1,0 +1,9 @@
+<?php
+$this
+    ->access('public')
+    ->site('www')
+    ->get(
+        '/logout',
+        'logout',
+        'Openmessage\Auth\Login\Ui\LogoutController@show'
+    );

@@ -1,0 +1,55 @@
+$menu-height: 60px !default;
+
+@mixin gap-menu {
+
+    @include foundation-menu;
+
+    .sub-menu {
+        background: $white;
+        height: $menu-height;
+
+        li {
+            display: inline-block;
+            height: $menu-height;
+            line-height: $menu-height;
+            padding: 0 20px;
+
+            > a {
+                display: inline;
+                color: $black-color;
+                padding: 0;
+            }
+
+            &.active {
+                border-bottom: 4px solid $p-color;
+
+                > a {
+                    color: $black-color;
+                }
+            }
+        }
+    }
+
+    .sub-tab {
+
+        li {
+
+            > a {
+                background: $line-dark-color;
+                color: $black-color;
+                margin-bottom: 10px;
+                margin-right: 10px;
+                padding: 8px 10px;
+            }
+
+            &.active {
+
+                > a {
+                    background: $p-color;
+                    color: $white;
+                }
+            }
+        }
+
+    }
+}

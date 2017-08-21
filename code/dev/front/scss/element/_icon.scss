@@ -1,0 +1,105 @@
+// sass-lint:disable no-url-domains
+// sass-lint:disable no-url-protocols
+// sass-lint:disable no-duplicate-properties
+// sass-lint:disable no-vendor-prefixes
+$icon-font-family: 'iconfont';
+@font-face {
+    font-family: 'iconfont';
+    src: url('//at.alicdn.com/t/font_5owmuemuyixxn7b9.eot');
+    src: url('//at.alicdn.com/t/font_5owmuemuyixxn7b9.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_5owmuemuyixxn7b9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_5owmuemuyixxn7b9.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_5owmuemuyixxn7b9.svg#iconfont') format('svg');
+}
+
+.icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    cursor: pointer;
+    font-family: $icon-font-family;
+    font-style: normal;
+}
+
+$icon: (
+    logo: '\e6ff',
+    user: '\e6f1',
+    advice: '\e708',
+    delete: '\e6bb',
+    update: '\e6e5',
+    search: '\e6b4',
+    set: '\e6f0',
+    classify: '\e6ef',
+    up: '\e8f7',
+    down: '\e8f8',
+    more: '\e6ea',
+    add: '\e6ee',
+    add-one: '\e6ba',
+    flow-1: '\e6f9',
+    flow-2: '\e6fd',
+    flow-3: '\e6f6',
+    flow-4: '\e6fe',
+    flow-5: '\e6fa',
+    flow-6: '\e6fc',
+    flow-7: '\e6f8',
+    flow-8: '\e6f7',
+    case-chair-1: '\e705',
+    case-chair-2: '\e703',
+    case-chair-3: '\e706',
+    case-chair-4: '\e701',
+    case-chair-5: '\e707',
+    case-chair-6: '\e702',
+    case-chair-7: '\e700',
+    case-chair-8: '\e704',
+    plus: '\e6ee',
+    back: '\e6f2',
+    point: '\e649',
+    wechat: '\e605',
+    phone: '\e60d',
+    upload: '\e6c2',
+    download: '\e61c',
+    file: '\e641',
+    img: '\e616',
+    loading: '\e64b',
+    tri-right: '\e8f9',
+    tri-down: '\e62f',
+);
+
+@each $key, $value in $icon {
+    .icon-#{$key} {
+        &::before {
+            content: $value;
+        }
+    }
+}
+
+.loading {
+
+    -webkit-animation: loading-rotate  2s infinite linear;
+    animation: loading-rotate  2s infinite linear;
+
+}
+
+@keyframes loading-rotate {
+
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+
+}
+
+@-webkit-keyframes loading-rotate {
+
+    from {
+        -webkit-transform: rotateZ(0deg);
+    }
+
+    to {
+        -webkit-transform: rotateZ(360deg);
+    }
+
+}

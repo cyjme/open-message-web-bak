@@ -1,0 +1,91 @@
+$red: #ed454c;
+
+.reset-by-account-form {
+    margin-top: 2rem;
+
+    > div {
+        &:nth-child(1) {
+            border-bottom-width: 0;
+            margin: $center;
+            padding: 1rem 0;
+            text-align: center;
+            width: 360px;
+        }
+    }
+
+    form {
+        margin: $center;
+        padding: 30px;
+    }
+
+    button {
+        background-color: $red;
+
+        &:hover {
+            background-color: darken($red, 15%);
+        }
+
+        &:focus {
+            background-color: darken($red, 15%);
+        }
+    }
+
+    .button {
+        &[disabled] {
+            background-color: $red;
+
+            &:hover {
+                background-color: darken($red, 20%);
+            }
+        }
+    }
+}
+
+.reg-by-email-form,
+.reg-by-phone-form {
+    margin: $center;
+    position: relative;
+
+    .user-type {
+        background: $white;
+        border: 1px solid $line-dark-color;
+        height: 100%;
+        position: absolute;
+        width: calc(100% + 2px);
+        z-index: 11;
+
+        .user-type-btn {
+            border: 1px solid $line-dark-color;
+            border-radius: 4px;
+            color: $dark-gray-color;
+            display: inline-block;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            width: 80%;
+        }
+    }
+}
+
+.login-by-email-form {
+    margin: $center;
+}
+
+.login-by-phone-form {
+    margin: $center;
+}
+
+.login-tip {
+    display: flex;
+
+    label {
+        flex-basis: 50%;
+    }
+
+    a {
+        flex-basis: 50%;
+        text-align: right;
+    }
+}
+

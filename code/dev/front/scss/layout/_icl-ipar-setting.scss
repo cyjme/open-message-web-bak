@@ -1,0 +1,22 @@
+$gap-palette: (
+    p-color: #4e5056,
+    p-dark-color: #25262c,
+    p-light-color: #c9c9c9,
+);
+
+$body-font-color: #000;
+$card-font-color: #666;
+$card-box-shadow-color: rgba(0, 0, 0, .2);
+
+$select-radius: 4px;
+$input-radius: 4px;
+$input-shadow: none;
+$input-default-border: #e3e3e5;
+$input-shadow-focus: none;
+$input-transition: border-color .25s ease-in-out;
+
+$menu-item-padding: 15px 0;
+$menu-item-background-active: inherit;
+
+$pagination-item-background-current: #4e5056;
+$btn-primary-bg: #ed454c;

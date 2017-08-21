@@ -1,0 +1,44 @@
+
+$status-background: (
+    remark: $light-gray-color,
+    unpaid: #faf3e0,
+    unPaid: #faf3e0,
+    toBeStarted: #f1dede,
+    makingDemo: #e8e3db,
+    toBeReceived: #d6edff,
+    toBeCommented: #d9eedf,
+    orderFinished: #a5deff,
+    waitingForQuotation: #f1dede,
+    paid: #a5deff,
+);
+$status-color: (
+    remark: $black-color,
+    unpaid: #b49a67,
+    unPaid: #b49a67,
+    toBeStarted: #80727b,
+    makingDemo: #716e73,
+    toBeReceived: #547aa5,
+    toBeCommented: #3f817c,
+    orderFinished: #4a7875,
+    waitingForQuotation: #80727b,
+    paid: #4a7875,
+);
+$status-radius: 2px;
+
+.status {
+    border-radius: $status-radius;
+    display: inline-block;
+    font-size: $small-font-size;
+    padding: 0 6px;
+
+    @each $key, $value in $status-background {
+        &.#{$key} {
+            background: $value;
+            color: map-get($status-color, $key);
+        }
+    }
+
+    .icon {
+        font-size: $small-font-size;
+    }
+}

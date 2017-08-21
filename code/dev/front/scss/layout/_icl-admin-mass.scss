@@ -1,0 +1,100 @@
+$aside-nav-margin: 5px 0;
+
+html {
+
+    body {
+        background-color: $bg-color;
+        min-height: 100vh;
+        overflow: auto;
+    }
+}
+
+.header {
+    background: $bg-color;
+    height: 50px;
+    left: 200px;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    width: calc(100% - 200px);
+    z-index: 9;
+
+    .global-search {
+        position: relative;
+        width: 50%;
+
+        .global-search-btn {
+            position: absolute;
+            top: 4px;
+        }
+
+        .global-search-input {
+            background: transparent;
+            border: 0;
+            height: 100%;
+            padding-left: 30px;
+            width: 100%;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
+
+.aside {
+    background-color: $p-dark-color;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 200px;
+    z-index: 1;
+
+    .aside-logo {
+        font-size: 60px;
+        text-align: center;
+
+        .icon {
+            color: $red-color;
+        }
+    }
+}
+
+.aside-nav {
+    li {
+        a {
+            color: $p-light-color;
+            display: block;
+            margin: $aside-nav-margin;
+            padding: 10px 20px;
+        }
+
+        &:hover,
+        &.active {
+            background: $p-color;
+
+            a {
+                color: $light-gray-color;
+            }
+        }
+    }
+}
+
+.main {
+    background: $bg-color;
+    min-height: 100%;
+    padding: 50px 0 20px 200px;
+
+    .main-header {
+        background: $white;
+        height: 65px;
+        padding: 0 20px;
+    }
+
+    .main-body {
+        padding: 20px;
+    }
+}
+

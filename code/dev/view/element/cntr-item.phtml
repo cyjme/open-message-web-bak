@@ -1,0 +1,81 @@
+<div class="cntr-item">
+    <div class="clearfix">
+        <h2 class="font-normal float-left m-n">
+            <?php $fetchCompanyCntrUrl = $this->routeUrl(
+                'fetchCompanyCntr',
+                ['companyCode' => $this->companyCode],
+                ['cntrId' => $this->cntr->getCntrId()]
+            ); 
+            ?>
+            <a href="<?php echo $fetchCompanyCntrUrl; ?>">
+                <?php echo $this->cntr->getCntrName(); ?>
+            </a>
+        </h2>
+        <div class="float-right">
+            <div class="float-left gray title small m-n">
+                <span class="key"><?php echo $this->trans('updated'); ?>:</span>
+                <span class="val">
+                    <?php echo $this->timeElapsed($this->cntr->getChanged()); ?></span>
+                </span>
+            </div>
+        </div>
+    </div><!-- .cheader -->
+
+    <div>
+        <div class="gray">
+            <span><?php echo $this->cntr->getLocaleKey(); ?> /</span>
+            <span><?php echo $this->cntr->getCntrCode(); ?></span>
+        </div>
+        <div class="m-t-xs m-b-xs">
+            <span class="status <?php echo $this->cntr->getStatus(); ?>"><i class="icon icon-<?php echo $this->cntr->getStatus(); ?>"></i><?php echo $this->cntr->getStatus(); ?>
+            </span>
+        </div>
+    </div>
+
+    <div class="dark-gray">
+        <div class="grid col3">
+            <div class="cell m-n">
+                 <strong class="key"><?php echo $this->trans('seller'); ?>:</strong>
+                 <span><?php echo $this->cntr->getSeller()->getSellerName(); ?></span>
+            </div>
+            <div class="cell m-n">
+                <strong class="key"><?php echo $this->trans('buyer'); ?>:</strong>
+                <span><?php echo $this->cntr->getBuyer()->getBuyerName(); ?></span>
+            </div>
+            <div class="cell m-n"></div>
+            <div class="cell m-n">
+                <strong class="key"><?php echo $this->trans('amnt'); ?>:</strong>
+                <span><?php echo $this->cntr->getProduction()->getAmnt(); ?></span>
+            </div>
+            <div class="cell m-n">
+                 <strong class="key"><?php echo $this->trans('dpst'); ?>:</strong>
+                <span><?php echo $this->cntr->getPmnt()->getDpst(); ?></span>
+            </div>
+            <div class="cell m-n">
+                <strong class="key"><?php echo $this->trans('balance'); ?>:</strong>
+                <span><?php echo $this->cntr->getPmnt()->getBalance(); ?></span>
+            </div>
+        </div>
+    </div>
+    <div class="cheader clearfix  border-b m-b-sm">
+        <div class="float m-b-sm title small gray">
+            <div class="item">
+                <span class="tint-pur"><i class="icon icon-task-list"></i></i></span>
+                <span class="grey-pur"></span>
+                
+            </div>
+             <div class="item p-l-m">
+                <span class="tint-blue"><i class="icon icon-txn-list"></i></i></span>
+                <span class="grey-pur"></span>
+            </div>
+            <div class="item">
+                <span class="tint-red p-l-m"><i class="icon icon-payment-list"></i></i></span>
+                <span class="grey-pur"></span>
+            </div>
+            <div class="item">
+                <span class="tint-grey p-l-m"><i class="icon icon-gathering-list"></i></i></span>
+                <span class="grey-pur"></span>
+            </div>
+        </div>
+    </div>
+</div><!-- .cntr-item -->

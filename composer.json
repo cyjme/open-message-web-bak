@@ -1,0 +1,57 @@
+{
+    "config": {
+        "vendor-dir": "code/vendor",
+        "secure-http": false
+    },
+    "require": {
+        "nikic/fast-route": "^1.0",
+        "symfony/http-foundation": "^3.2",
+        "foil/foil": "^0.6",
+        "hightman/xunsearch": "^1.4",
+        "filp/whoops": "^2.1",
+        "bshaffer/oauth2-server-php": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gap\\": "code/dev/core/gap/src/",
+            "Openmessage\\": "code/dev/app/openmessage/src/",
+            "Openmessage\\Mass\\": "code/dev/app/openmessage/mass/src/",
+            "Openmessage\\Admin\\": "code/dev/app/openmessage/admin/src/",
+            "Openmessage\\MassClient\\": "code/dev/app/openmessage/massClient/src/",
+            "Openmessage\\MassPush\\": "code/dev/app/openmessage/massPush/src/",
+            "Openmessage\\Group\\": "code/dev/app/openmessage/group/src/",
+            "Openmessage\\User\\": "code/dev/app/openmessage/user/src/",
+            "Openmessage\\MassUser\\": "code/dev/app/openmessage/massUser/src/",
+            "Openmessage\\Auth\\": "code/dev/app/openmessage/auth/src/",
+            "Openmessage\\Startup\\": "code/dev/app/openmessage/Startup/src/",
+            "Openmessage\\MassHome\\": "code/dev/app/openmessage/massHome/src/",
+            "Openmessage\\Msg\\": "code/dev/app/openmessage/msg/src/"
+        },
+        "files": [
+            "code/dev/core/gap/fun/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "cmdtest\\Gap\\": "code/dev/core/gap/cmdtest/",
+            "cmdtest\\Openmessage\\": "code/dev/app/openmessage/cmdtest/",
+            "cmdtest\\Openmessage\\Mass\\": "code/dev/app/openmessage/mass/cmdtest/",
+            "cmdtest\\Openmessage\\Admin\\": "code/dev/app/openmessage/admin/cmdtest/",
+            "cmdtest\\Openmessage\\MassClient\\": "code/dev/app/openmessage/massClient/cmdtest/",
+            "cmdtest\\Openmessage\\MassPush\\": "code/dev/app/openmessage/massPush/cmdtest/",
+            "cmdtest\\Openmessage\\Group\\": "code/dev/app/openmessage/group/cmdtest/",
+            "cmdtest\\Openmessage\\User\\": "code/dev/app/openmessage/user/cmdtest/",
+            "cmdtest\\Openmessage\\MassUser\\": "code/dev/app/openmessage/massUser/cmdtest/",
+            "cmdtest\\Openmessage\\Auth\\": "code/dev/app/openmessage/auth/cmdtest/",
+            "cmdtest\\Openmessage\\Startup\\": "code/dev/app/openmessage/startup/cmdtest/",
+            "cmdtest\\Openmessage\\MassHome\\": "code/dev/app/openmessage/massHome/cmdtest/",
+            "cmdtest\\Openmessage\\Msg\\": "code/dev/app/openmessage/msg/cmdtest/"
+        }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.1",
+        "squizlabs/php_codesniffer": "^3.0",
+        "phpunit/phpunit": "^5.6",
+        "phpmd/phpmd": "^2.4"
+    }
+}

@@ -1,0 +1,12 @@
+<?php $this->layout('layout/openmessage-admin', [
+    'selectedMenu' => 'trans'
+]); ?>
+
+<?php $this->section('main'); ?>
+<h1><?php echo $this->trans('update-trans'); ?></h1>
+
+<?php echo $this->insert('app/openmessage/admin/module/trans/trans-form', [
+    'key' => $this->key
+]); ?>
+
+<?php $this->replace(); ?>

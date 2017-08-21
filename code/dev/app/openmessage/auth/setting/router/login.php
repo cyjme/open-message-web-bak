@@ -1,0 +1,45 @@
+<?php
+$this
+    ->access('public')
+    ->site('www')
+
+    ->get(
+        '/login',
+        'login',
+        'Openmessage\Auth\Login\Ui\LoginController@show'
+    )
+    ->post(
+        '/login/email',
+        'loginByEmail',
+        'Openmessage\Auth\Login\Ui\LoginByEmailController@post'
+    )
+    ->post(
+        '/login/phone',
+        'loginByPhone',
+        'Openmessage\Auth\Login\Ui\LoginByPhoneController@post'
+    )
+    ->postRest(
+        '/login/verifyPasswordByPhone',
+        'verifyPasswordByPhone',
+        'Openmessage\Auth\Login\Rest\VerifyPasswordByPhoneController@post'
+    )
+    ->postRest(
+        '/login/verifyPasswordByEmail',
+        'verifyPasswordByEmail',
+        'Openmessage\Auth\Login\Rest\VerifyPasswordByEmailController@post'
+    )
+    ->get(
+        '/oauth/cb',
+        'authCb',
+        'Openmessage\Auth\Login\Ui\OAuthController@callBack'
+    )
+    ->get(
+        '/oauth/login',
+        'oauthLogin',
+        'Openmessage\Auth\Login\Ui\OAuthController@getAuthorizationCode'
+    )
+    ->get(
+        '/oauth/reg',
+        'oauthReg',
+        'Openmessage\Auth\Login\Ui\OAuthController@oauthReg'
+    );

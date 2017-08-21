@@ -1,0 +1,40 @@
+<?php
+$this
+    ->site('www')
+    ->access('public')
+
+    ->get(
+        '/admin/trans',
+        'landTrans',
+        'Openmessage\Startup\Trans\Ui\LandTransController@show'
+    )
+    ->get(
+        '/admin/fetch-trans',
+        'fetchTrans',
+        'Openmessage\Startup\Trans\Ui\FetchTransController@show'
+    )
+    ->get(
+        '/admin/create-trans',
+        'createTrans',
+        'Openmessage\Startup\Trans\Ui\CreateTransController@show'
+    )
+    ->post(
+        '/admin/create-trans',
+        'createTransPost',
+        'Openmessage\Startup\Trans\Ui\CreateTransController@post'
+    )
+    ->postRest(
+        '/api/admin/fetch-trans',
+        'fetchTrans',
+        'Openmessage\Startup\Trans\Rest\FetchTransController@post'
+    )
+    ->postRest(
+        '/api/admin/update-trans',
+        'updateTrans',
+        'Openmessage\Startup\Trans\Rest\UpdateTransController@post'
+    )
+    ->postRest(
+        '/api/admin/delete-trans',
+        'deleteTrans',
+        'Openmessage\Startup\Trans\Rest\DeleteTransController@post'
+    );

@@ -1,0 +1,23 @@
+<?php
+$this->layout('layout/openmessage-auth', [
+    'pageAttr' => [
+        'sendVerifyCodeByEmail' => $this->routePostRest('sendVerifyCodeByEmail'),
+        'fetchUserByAccount' => $this->routePostRest('fetchUserByAccount'),
+        'sendVerifyCodeByPhone' => $this->routePostRest('sendVerifyCodeByPhone'),
+        'resetByAccount' => $this->routePost('resetByAccount'),
+        'checkVerifyCodeByEmail' => $this->routePostRest('checkVerifyCodeByEmail'),
+        'checkVerifyCodeByPhone' => $this->routePostRest('checkVerifyCodeByPhone')
+    ],
+]);
+?>
+
+<?php $this->section('main'); ?>
+    <section class="main">
+        <div class="reset-by-account-form">
+        </div>
+
+        <div class="loader"
+             zon-load="reset.load" data-page="reset/resetByAccount">
+        </div>
+    </section>
+<?php $this->replace(); ?>

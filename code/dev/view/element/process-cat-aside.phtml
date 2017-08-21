@@ -1,0 +1,10 @@
+<aside class="aside">
+    <h3 class="title normal"><?php echo $this->trans('processCat')?></h3>
+    <ul class="first-list">
+        <?php foreach ($this->processCatSet->getItems() as $processCat) { ?>
+            <li class="item first-item">
+                <span><?php echo $processCat->getName(); ?></span>
+            </li>
+        <?php } ?>
+    </ul>
+</aside>

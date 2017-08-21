@@ -1,0 +1,167 @@
+<?php
+$this->layout('layout/openmessage-main', [
+    'pageAttr' => [
+        'setNameOfUser' => $this->routePostRest('setNameOfUser'),
+        'setWeixinOfUser' => $this->routePostRest('setWeixinOfUser'),
+        'setAddrOfUser' => $this->routePostRest('setAddrOfUser'),
+        'addAddrOfUser' => $this->routePostRest('addAddrOfUser'),
+        'setPhoneOfUser' => $this->routePostRest('setPhoneOfUser'),
+        'setEmailOfUser' => $this->routePostRest('setEmailOfUser'),
+        'sendVerifyCodeByPhone' => $this->routePostRest('sendVerifyCodeByPhone'),
+        'checkVerifyCodeByPhone' => $this->routePostRest('checkVerifyCodeByPhone'),
+        'sendVerifyCodeByEmail' => $this->routePostRest('sendVerifyCodeByEmail'),
+        'checkVerifyCodeByEmail' => $this->routePostRest('checkVerifyCodeByEmail'),
+        'fetchUpToken' => $this->routeGetRest('fetchUpToken'),
+        'setAvtOfUser' => $this->routePostRest('setAvtOfUser'),
+    ],
+]);
+$user = $this->user;
+$userId = $user->get('userId');
+$userName = $user->get('nick');
+$userWeixin = $user->get('weixin');
+$userEmail = $this->userEmail ? $this->userEmail->get('email') : $this->trans('email not registed');
+$userPhone = $this->userPhone ? $this->userPhone->get('phone') : $this->trans('phone not registed');
+?>
+<?php $this->section('main'); ?>
+    <section class="main">
+        <div class="user-wrap loader" zon-load="user.load" data-page="user/fetchUser">
+            <h2 class="title large p-h-lg"><?php echo $this->trans('personalInfo'); ?></h2>
+            <div class="meta-item">
+                <div class="key"><span><?php echo $this->trans('avt'); ?></span></div>
+                <div class="value">
+                    <div class="name-info">
+                        <div class="grid col4 space">
+                            <div class="cell2">
+                                <?php
+                                    $qiniuDomain = $this->config->get('qiniu.domain');
+                                    $qiniuThumb = '?imageMogr2/thumbnail/80x/strip/quality/50/format/jpg';
+                                ?>
+                                <?php if ($user->getAvt() != '' && $user->getAvt() != '[]') { ?>
+                                    <img src="<?php echo $qiniuDomain . json_decode($user->getAvt(), true)[0] . $qiniuThumb; ?>">
+                                <?php } ?>
+                            </div>
+                            <div class="cell2">
+                                <i class="icon icon-update set-avt-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="meta-item">
+                <div class="key"><span><?php echo $this->trans('name'); ?></span></div>
+                <div class="value">
+                    <div class="name-info">
+                        <div class="grid col4 space">
+                            <div class="cell2">
+                                <input type="text" placeholder="<?php echo $this->trans('name'); ?>" value="<?php echo $userName; ?>" readonly>
+                            </div>
+                            <div class="cell2">
+                                <i class="icon icon-update set-name-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="set-name-of-user-form hide"
+                        data-user-id="<?php echo $userId; ?>"
+                    >
+                    </div>
+                </div>
+            </div>
+            <div class="meta-item">
+                <div class="key"><span><?php echo $this->trans('weixin'); ?></span></div>
+                <div class="value">
+                    <div class="weixin-info">
+                        <div class="grid col4 space">
+                            <div class="cell2">
+                                <input type="text" placeholder="<?php echo $this->trans('weixin'); ?>" value="<?php echo $userWeixin; ?>" readonly>
+                            </div>
+                            <div class="cell2">
+                                <i class="icon icon-update set-weixin-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="set-weixin-of-user-form hide"
+                        data-user-id="<?php echo $userId; ?>"
+                    >
+                    </div>
+                </div>
+            </div>
+            <div class="meta-item">
+                <div class="key"><span><?php echo $this->trans('phone'); ?></span></div>
+                <div class="value">
+                    <div class="phone-info">
+                        <div class="grid col4 space">
+                            <div class="cell2">
+                                <input type="text" placeholder="<?php echo $this->trans('phone'); ?>" value="<?php echo $userPhone; ?>" readonly>
+                            </div>
+                            <div class="cell2">
+                                <i class="icon icon-update set-phone-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="set-phone-of-user-form hide"
+                        data-user-id="<?php echo $userId; ?>"
+                    >
+                    </div>
+                </div>
+            </div>
+            <div class="meta-item">
+                <div class="key"><span><?php echo $this->trans('email'); ?></span></div>
+                <div class="value">
+                    <div class="email-info">
+                        <div class="grid col4 space">
+                            <div class="cell2">
+                                <input type="email" placeholder="<?php echo $this->trans('email'); ?>" value="<?php echo $userEmail; ?>" readonly>
+                            </div>
+                            <div class="cell2">
+                                <i class="icon icon-update set-email-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="set-email-of-user-form hide"
+                        data-user-id="<?php echo $userId; ?>"
+                    >
+                    </div>
+                </div>
+            </div>
+
+            <div class="meta-item">
+                <div class="key"><span><?php echo $this->trans('addr'); ?></span></div>
+                <div class="value">
+                <?php if ($this->userAddrSet->getItems()->current()) { ?>
+                    <?php foreach ($this->userAddrSet->getItems() as $addr) { ?>
+                        <div class="addr-info p-b-sm">
+                            <div class="grid col4 space">
+                                <div class="cell3">
+                                    <input type="text" placeholder="<?php echo $this->trans('addr'); ?>" value="<?php echo $addr->getAddr(); ?>" readonly>
+                                </div>
+                                <div class="cell1">
+                                    <i class="icon icon-update set-addr-btn p-r-m"
+                                        data-addr-id="<?php echo $addr->getUserAddrId(); ?>">
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php }?>
+                <i class="icon icon-add add-addr-btn"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="zmask hide">
+        <div class="set-addr-of-user-pop zpop">
+            <div class="set-addr-of-user-form"
+                data-addr-id="">
+            </div>
+        </div>
+        <div class="add-addr-of-user-pop zpop">
+            <div class="add-addr-of-user-form"
+                data-user-id="<?php echo $userId; ?>">
+            </div>
+        </div>
+        <div class="set-avt-of-user-pop zpop">
+            <div class="set-avt-of-user-form">
+            </div>
+        </div>
+    </div>
+<?php $this->replace(); ?>

@@ -1,0 +1,44 @@
+$mask-background: rgba(44, 56, 71, .66);
+$zpop-shadow-color: rgba(44, 56, 71, .5);
+
+@mixin gap-zmask {
+
+    .zmask-outer {
+        border: 0;
+        font: inherit;
+        font-size: 100%;
+        margin: $zero;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        vertical-align: baseline;
+        width: 100%;
+        z-index: 10000;
+
+        .zmask {
+            background: $mask-background;
+            height: 100%;
+            left: 0;
+            overflow-y: auto;
+            position: fixed;
+            top: 0;
+            width: 100%;
+
+            .zpop {
+                box-shadow: 0 2px 8px 0 $zpop-shadow-color;
+                background: $white;
+                border-radius: 3px;
+                height: auto;
+                left: 50%;
+                position: absolute;
+                top: 100px;
+                width: 700px;
+                z-index: 77;
+
+                input, select, textarea {
+                    border-radius: 2px;
+                }
+            }
+        }
+    }
+}

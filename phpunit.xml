@@ -1,0 +1,40 @@
+<phpunit bootstrap="code/bootstrap/autoload-phpunit.php">
+    <testsuites>
+        <testsuite name="openmessage/mass">
+            <directory>code/dev/app/openmessage/mass/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/admin">
+            <directory>code/dev/app/openmessage/admin/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/massClient">
+            <directory>code/dev/app/openmessage/massClient/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/massPush">
+            <directory>code/dev/app/openmessage/massPush/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/group">
+            <directory>code/dev/app/openmessage/group/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/user">
+            <directory>code/dev/app/openmessage/user/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/massUser">
+            <directory>code/dev/app/openmessage/massUser/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/auth">
+            <directory>code/dev/app/openmessage/auth/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/startup">
+            <directory>code/dev/app/openmessage/startup/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/massHome">
+            <directory>code/dev/app/openmessage/massHome/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/msg">
+            <directory>code/dev/app/openmessage/msg/phpunit</directory>
+        </testsuite>
+        <testsuite name="gap">
+            <directory>code/dev/core/gap/phpunit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

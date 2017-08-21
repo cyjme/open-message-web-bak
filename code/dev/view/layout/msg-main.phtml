@@ -1,0 +1,35 @@
+<?php
+$version = $this->config->get('version');
+$pageAttr = $this->pageAttr ? $this->pageAttr : [];
+$pageAttr['token'] = $this->token();
+$pageAttr['now'] = micro_date();
+$pageAttr['list-trans-group'] = $this->routePostRest('listTransGroup');
+$pageAttr['create-trans-group'] = $this->routePostRest('createTransGroup');
+$pageAttr['localeKey'] = 'zh-cn';
+$pageAttr['qiniuDomain'] = $this->config->get('qiniu.domain');
+$pageAttr['currentUser'] = $this->getCurrentUser();
+?><!DOCTYPE html>
+<html lang="<?php echo $this->request->getLocaleKey(); ?>" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?php echo $this->staticUrl('css/msg.css?v=' . $version); ?>">
+    <title><?php echo $this->trans('ideapar'); ?></title>
+    <?php $this->section('style'); ?><?php $this->stop(); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+<body class="ipar">
+<?php echo $this->insert('element/main-header', [
+    'menu' => $this->config->get('menu.mass'),
+    'selectedMenu' => $this->selectedMenu
+]); ?>
+
+<?php $this->section('main'); ?><?php $this->stop(); ?>
+
+<input type="hidden" id="page-attr"
+       value="<?php echo attr_json($pageAttr); ?>">
+
+<script src="<?php echo $this->staticUrl('js/mass.js?v=' . $version); ?>"></script>
+<?php $this->section('script'); ?><?php $this->stop(); ?>
+</body>
+</html>
