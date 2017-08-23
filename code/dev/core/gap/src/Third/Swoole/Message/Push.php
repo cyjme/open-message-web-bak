@@ -54,6 +54,14 @@ class Push extends MessageBase
                 ->getAllAccIdsByAppId($appId);
         }
 
+        if ($groupId) {
+            $accIds = obj(new FetchGroupService($this->app))
+                ->getAccIdsByGroupId($groupId);
+        }
+
+        if ($msg->toAccId) {
+        }
+
         return $accIds;
     }
 

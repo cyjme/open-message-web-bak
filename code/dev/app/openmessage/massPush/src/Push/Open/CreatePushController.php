@@ -5,6 +5,7 @@ use Openmessage\MassPush\Push\Dto\PushDto;
 use Openmessage\MassPush\Push\Service\CreatePushService;
 use Openmessage\MassPush\Push\Service\CreatePushToQueueService;
 use Openmessage\MassClient\App\Service\FetchAppService;
+use Openmessage\Group\Group\Service\FetchGroupService;
 
 use Gap\Third\Swoole\WebSocket\WebSocket;
 
@@ -28,6 +29,12 @@ class CreatePushController extends ControllerBase
             'toGroupId'=>$post->get('toGroupId'),
             'created' => micro_date()
         ];
+
+        if ($toGroupName = $post->get('toGroupName')) {
+            $group = obj(new FetchGroupService($this->app))
+                        ->fetchGroupByNameAndAppId($toGroupName, $app->getAppId());
+            $pushArr['toGroupId'] = $group->getGroupId();
+        }
 
         $push = new PushDto($pushArr);
 
