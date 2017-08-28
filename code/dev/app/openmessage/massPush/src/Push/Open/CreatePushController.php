@@ -36,6 +36,13 @@ class CreatePushController extends ControllerBase
             $pushArr['toGroupId'] = $group->getGroupId();
         }
 
+        if ($toAccToken = $post->get('toAccToken')){
+            $acc = obj(new FetchAccService($this->app))
+                    ->fetchByToken($token);
+            
+            $pushArr['toAccId'] = $acc->getAccId();
+        }
+
         $push = new PushDto($pushArr);
 
         obj(new CreatePushService($this->app))
