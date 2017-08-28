@@ -44,7 +44,6 @@ class Push extends MessageBase
 
     protected function getAccIds($msg)
     {
-        $groupId = $msg->toGroupId;
         $accIds = [];
         $appId = $msg->appId;
 
@@ -53,7 +52,7 @@ class Push extends MessageBase
                 ->getAllAccIdsByAppId($appId);
         }
 
-        if ($groupId) {
+        if ($msg->toGroupId) {
             $accIds[] = obj(new FetchGroupService($this->app))
                 ->getAccIdsByGroupId($groupId);
         }
