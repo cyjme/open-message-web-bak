@@ -19,7 +19,7 @@ $this
         "Openmessage\\User\\" => [
             "dir" => "/dev/app/openmessage/user",
         ],
-        "Openmessage\\massUser\\" => [
+        "Openmessage\\MassUser\\" => [
             "dir" => "/dev/app/openmessage/massUser",
         ],
         "Openmessage\\auth\\" => [
