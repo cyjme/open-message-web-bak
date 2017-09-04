@@ -34,4 +34,10 @@ $this
         "Openmessage\\Msg\\" => [
             "dir" => "/dev/app/openmessage/msg",
         ],
+        "Openmessage\\Open\\" => [
+            "dir" => "/dev/app/openmessage/open",
+        ],
+        "Openmessage\\OpenChat\\" => [
+            "dir" => "/dev/app/openmessage/openChat",
+        ],
     ]);

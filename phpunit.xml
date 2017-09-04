@@ -33,6 +33,12 @@
         <testsuite name="openmessage/msg">
             <directory>code/dev/app/openmessage/msg/phpunit</directory>
         </testsuite>
+        <testsuite name="openmessage/open">
+            <directory>code/dev/app/openmessage/open/phpunit</directory>
+        </testsuite>
+        <testsuite name="openmessage/openChat">
+            <directory>code/dev/app/openmessage/openChat/phpunit</directory>
+        </testsuite>
         <testsuite name="gap">
             <directory>code/dev/core/gap/phpunit</directory>
         </testsuite>

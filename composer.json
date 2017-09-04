@@ -25,7 +25,9 @@
             "Openmessage\\Auth\\": "code/dev/app/openmessage/auth/src/",
             "Openmessage\\Startup\\": "code/dev/app/openmessage/startup/src/",
             "Openmessage\\MassHome\\": "code/dev/app/openmessage/massHome/src/",
-            "Openmessage\\Msg\\": "code/dev/app/openmessage/msg/src/"
+            "Openmessage\\Msg\\": "code/dev/app/openmessage/msg/src/",
+            "Openmessage\\Open\\": "code/dev/app/openmessage/open/src/",
+            "Openmessage\\OpenChat\\": "code/dev/app/openmessage/openChat/src/"
         },
         "files": [
             "code/dev/core/gap/fun/functions.php"
@@ -45,7 +47,9 @@
             "cmdtest\\Openmessage\\Auth\\": "code/dev/app/openmessage/auth/cmdtest/",
             "cmdtest\\Openmessage\\Startup\\": "code/dev/app/openmessage/startup/cmdtest/",
             "cmdtest\\Openmessage\\MassHome\\": "code/dev/app/openmessage/massHome/cmdtest/",
-            "cmdtest\\Openmessage\\Msg\\": "code/dev/app/openmessage/msg/cmdtest/"
+            "cmdtest\\Openmessage\\Msg\\": "code/dev/app/openmessage/msg/cmdtest/",
+            "cmdtest\\Openmessage\\Open\\": "code/dev/app/openmessage/open/cmdtest/",
+            "cmdtest\\Openmessage\\OpenChat\\": "code/dev/app/openmessage/openChat/cmdtest/"
         }
     },
     "require-dev": {
