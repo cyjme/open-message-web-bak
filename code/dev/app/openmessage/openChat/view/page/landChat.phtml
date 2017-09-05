@@ -1,0 +1,53 @@
+<?php
+$version = $this->config->get('version');
+$pageAttr = $this->pageAttr ? $this->pageAttr : [];
+$pageAttr['token'] = $this->token();
+$pageAttr['now'] = micro_date();
+$pageAttr['localeKey'] = 'zh-cn';
+$pageAttr['qiniuDomain'] = $this->config->get('qiniu.domain');
+?><!DOCTYPE html>
+<html lang="<?php echo $this->request->getLocaleKey(); ?>" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?php echo $this->staticUrl('css/chat.css?v=' . $version); ?>">
+    <title><?php echo $this->trans('ideapar'); ?></title>
+    <?php $this->section('style'); ?><?php $this->stop(); ?>
+</head>
+<body class="chat-body">
+<div id="layout-container">
+    <div id="layout-main">
+        <div id="header">
+            <div class="search-bar-wraper">
+            </div>
+        </div>
+        <div id="body">
+            <div id="menu-pannel">
+                <div class="profile">
+                <div class="user-avatar big-52 with-border" style="background-image: url('https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg');"></div>
+                </div>
+                <ul class="main-menus">
+                    <li class="menu-item">
+                        test
+                    </li>
+                    <li class="menu-item">
+                        test
+                    </li>
+                </ul>
+                <ul class="extra-options">
+
+                </ul>
+            </div>
+            <div id="menu-pannel-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="page-attr"
+       value="<?php echo attr_json($pageAttr); ?>">
+
+<script src="<?php echo $this->staticUrl('js/chat.js?v=' . $version); ?>"></script>
+<?php $this->section('script'); ?><?php $this->stop(); ?>
+</body>
+</html>
