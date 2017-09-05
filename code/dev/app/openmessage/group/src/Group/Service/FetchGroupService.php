@@ -11,7 +11,7 @@ class FetchGroupService extends ServiceBase
             ->getAllAccIdsByAppId($appId);
     }
 
-    function fetchGroupByNameAndAppId($groupName, $appId)
+    public function fetchGroupByNameAndAppId($groupName, $appId)
     {
         return obj(new FetchGroupRepo($this->getDmg()))
             ->fetchGroupByNameAndAppId($groupName, $appId);

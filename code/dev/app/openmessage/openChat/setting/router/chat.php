@@ -1,6 +1,6 @@
 <?php
 $this
-    ->site('www') 
+    ->site('www')
     ->access('public')
 
     ->get(

@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreFile
 namespace Gap\Third\Swoole\WebSocket;
 
 use Swoole;
