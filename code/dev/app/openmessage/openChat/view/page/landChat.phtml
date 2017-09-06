@@ -5,6 +5,8 @@ $pageAttr['token'] = $this->token();
 $pageAttr['now'] = micro_date();
 $pageAttr['localeKey'] = 'zh-cn';
 $pageAttr['qiniuDomain'] = $this->config->get('qiniu.domain');
+$pageAttr['fromAccToken'] = $this->fromAccToken;
+$pageAttr['toAccToken'] = $this->toAccToken;
 ?><!DOCTYPE html>
 <html lang="<?php echo $this->request->getLocaleKey(); ?>" prefix="og: http://ogp.me/ns#">
 
