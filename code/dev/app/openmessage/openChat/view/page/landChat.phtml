@@ -39,6 +39,43 @@ $pageAttr['qiniuDomain'] = $this->config->get('qiniu.domain');
                 </ul>
             </div>
             <div class="menu-pannel-body">
+                <div class="sub-menu-pannel" class="conv-list-pannel">
+                    <div class="conv-lists-box" id="user-lists">
+                        <div class="conv-lists" id="conv-lists"></div>
+                    </div>
+                </div>
+
+                <div class="content-pannel">
+                    <div class="conv-detail-pannel">
+                        <div class="nocontent-logo"></div>
+                        <div class="content-pannel-body chat-box-new" id="chat-box">
+                            <div class="main-chat chat-items" id="chat-lists">
+                                <div class="msg-items" id="chatLineHolder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="send-msg-box-wrapper">
+                            <div class="input-area" style="display:none;">
+                                <ul class="tool-bar">
+                                    <li class="tool-item">
+                                        <i class="iconfont tool-icon tipper-attached emotion_btn" title="表情"></i>
+                                        <div class="faceDiv"></div>
+                                    </li>
+                                    <li class="tool-item">
+                                        <i class="iconfont tool-icon icon-card tipper-attached" onclick="upload()" title="图片"></i>
+                                    </li>
+                                </ul>
+                                <span class="user-guide">Enter 发送 , Ctrl+Enter 换行</span>
+                                <div class="msg-box" style="height:100%;">
+                                    <textarea class="textarea input-msg-box" onkeydown="chat.keySend(event);" id="chattext"></textarea>
+                                </div>
+                            </div>
+                            <div class="action-area" style="display:none;">
+                                <a href="javascript:;" class="send-message-button" onclick="chat.sendMessage()">发送</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
