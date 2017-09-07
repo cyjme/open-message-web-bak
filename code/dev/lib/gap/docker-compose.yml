@@ -1,0 +1,107 @@
+version: '2'
+services:
+    redis0:
+        build: ./code/dev/core/gap/docker/redis
+        image: message.jason.redis
+        container_name: message.jason.redis0
+        expose:
+            - "6379"
+
+    js-server0:
+        build: ./code/dev/core/gap/docker/js-server
+        image: message.jason.js-server
+        container_name: message.jason.js-server0
+        volumes:
+            - ./code:/var/js/code
+            - ./code/dev/core/gap/docker/js-server/node_modules:/var/js/node_modules
+        expose:
+            - "8787"
+        ports:
+            - "8787:8787"
+
+    task-server0:
+        build: ./code/dev/core/gap/docker/task-server
+        image: message.jason.task-server
+        container_name: message.jason.task-server0
+        volumes:
+            - ./code:/var/code
+        links:
+            - redis0:redis
+            - db0:db
+        expose:
+            - "9502"
+        ports:
+            - "9502:9502"
+
+    msg-server0:
+        build: ./code/dev/core/gap/docker/msg-server
+        image: message.jason.msg-server
+        container_name: message.jason.msg-server0
+        volumes:
+            - ./code:/var/code
+        links:
+            - redis0:redis
+            - db0:db
+        expose:
+            - "9503"
+        ports:
+            - "9503:9503"
+
+    php0:
+        build: ./code/dev/core/gap/docker/php
+        image: message.jason.php
+        container_name: message.jason.php0
+        volumes:
+            - ./code:/var/code
+        links:
+            - redis0:redis
+            - db0:db
+            - task-server0:task-server
+            - xunsearch0:xunsearch
+        expose:
+            - "9000"
+
+    nginx0:
+        build: ./code/dev/core/gap/docker/nginx
+        image: message.jason.nginx
+        container_name: message.jason.nginx0
+        volumes:
+            - ./code:/var/code
+            - ./docker/nginx/sites-enabled:/usr/local/conf/sites-enabled
+        links:
+            - php0:php
+            - js-server0:js-server
+        expose:
+            - "80"
+        ports:
+            - "80:80"
+
+    db0:
+        build: ./code/dev/core/gap/docker/mariadb
+        image: message.jason.db
+        container_name: message.jason.db0
+        volumes:
+            - ./data/db0:/var/data
+        expose:
+            - "3306"
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456789
+            - CLUSTER_NAME=ideapar-cluster
+            - MAXSCALE_USER=maxscale
+            - MAXSCALE_PASS=123456789
+            - SERVER_ID=10
+
+    xunsearch0:
+        build: ./code/dev/core/gap/docker/xunsearch
+        image: message.jason.xunsearch
+        container_name: message.jason.xunsearch0
+        volumes:
+            - ./data/xs0:/usr/local/xunsearch/data
+        expose:
+            - "8383"
+            - "8384"
+        ports:
+            - "8383:8383"
+            - "8384:8384"

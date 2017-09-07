@@ -1,0 +1,83 @@
+#!/bin/bash
+
+#set -ex
+
+if [[ $1 ]]; then
+    baseDir=$1
+else
+    baseDir=`pwd`
+fi
+
+echo -n "Enter baseDir($baseDir) > "
+read inputBaseDir
+
+if [[ $inputBaseDir ]]; then
+    baseDir=$inputBaseDir
+fi
+
+if [[ ! -f "$baseDir/.gaprc" ]]; then
+    echo "cannot found .gaprc; not gap project"
+    exit 1
+fi
+
+. "$baseDir/.gaprc"
+
+if [[ ! "$baseHost" ]]; then
+    echo "cannot find baseHost config"
+    exit 1
+fi
+
+echo -n "Enter dbDatabase($dbDatabase) > "
+read inputDbDatabase
+
+if [[ "$inputDbDatabase" ]]; then
+    dbDatabase=$inputDbDatabase
+fi
+
+echo -n "Enter dbUsername($dbUsername) > "
+read inputDbUsername
+
+if [[ "$inputDbUsername" ]]; then
+    dbUsername=$inputDbUsername
+fi
+
+echo -n "Enter dbPassword($dbPassword) > "
+read inputDbPassword
+
+if [[ "$inputDbPassword" ]]; then
+    dbPassword=$inputDbPassword
+fi
+
+echo "baseDir=$baseDir"
+echo "baseHost=$baseHost"
+echo "dbDatabase=$dbDatabase"
+echo "dbUsername=$dbUsername"
+echo "dbPassword=$dbPassword"
+
+echo -n "continue (y/N)? > "
+read isContinue
+
+if [[ "$isContinue" != "y" ]]; then
+    exit 0
+fi
+
+cat <<EOM >"$baseDir/.gaprc"
+baseDir="$baseDir"
+baseHost="$baseHost"
+dbDatabase="$dbDatabase"
+dbUsername="$dbUsername"
+dbPassword="$dbPassword"
+EOM
+
+cp "$baseDir/tool/database/init.sql" "$baseDir/database-init.sql"
+
+sed -i -e "s/{dbDatabase}/$dbDatabase/g" "$baseDir/code/setting/config/config.init.local.php"
+sed -i -e "s/{dbUsername}/$dbUsername/g" "$baseDir/code/setting/config/config.init.local.php"
+sed -i -e "s/{dbPassword}/$dbPassword/g" "$baseDir/code/setting/config/config.init.local.php"
+
+sed -i -e "s/{dbDatabase}/$dbDatabase/g" "$baseDir/database-init.sql"
+sed -i -e "s/{dbUsername}/$dbUsername/g" "$baseDir/database-init.sql"
+sed -i -e "s/{dbPassword}/$dbPassword/g" "$baseDir/database-init.sql"
+
+docker exec -i $baseHost.db0 mysql -uroot -p123456789 < "$baseDir/database-init.sql"
+rm "$baseDir/database-init.sql"

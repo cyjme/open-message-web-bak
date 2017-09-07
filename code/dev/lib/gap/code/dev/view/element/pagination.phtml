@@ -1,0 +1,28 @@
+<?php
+$curPage = $this->request->get('page', 1);
+$pageCount = $this->pageCount;
+$prevPage = ($curPage > 1) ? $curPage - 1 : '1';
+$nextPage = ($curPage < $this->pageCount) ? $curPage + 1 : $this->pageCount;
+
+$query = $this->request->query->all();
+$prevUrl = '?' . http_build_query(array_merge($query, ['page' => $prevPage]));
+$nextUrl = '?' . http_build_query(array_merge($query, ['page' => $nextPage]));
+?>
+<?php if ($pageCount > 1) {?>
+<ul class="pagination text-center m-n" role="navigation" aria-label="Pagination">
+    <?php if ($curPage > 1) { ?>
+    <li class="pagination-previous disabled">
+        <a href="<?php echo $prevUrl; ?>">
+            <?php echo $this->trans('prev'); ?>
+        </a>
+    </li>
+    <?php } ?>
+    <?php if ($curPage < $pageCount) { ?>
+    <li class="pagination-next">
+        <a href="<?php echo $nextUrl; ?>">
+            <?php echo $this->trans('next'); ?>
+        </a>
+    </li>
+    <?php } ?>
+</ul>
+<?php } ?>

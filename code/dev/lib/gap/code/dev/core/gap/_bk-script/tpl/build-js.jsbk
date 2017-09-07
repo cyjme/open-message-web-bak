@@ -1,0 +1,80 @@
+function buildAppJs(name, dir) {
+    let entries = frontConfig.js.entry;
+    let appDir;
+
+    name = name.replace('/', '-');
+
+    appDir = path.resolve(dir, name);
+
+    if (!fs.existsSync(appDir)) {
+        return;
+    }
+
+    let bootJses = glob.sync(
+        path.resolve(appDir, 'boot/**/*.js'),
+        {ignore: '**/_*', follow: options.follow}
+    );
+
+    let pageJses = glob.sync(
+        path.resolve(appDir, 'page/**/*.js'),
+        {ignore: '**/_*', follow: options.follow}
+    );
+
+    entries.forEach(entry => {
+        let bootEntryJses = glob.sync(
+            path.resolve(appDir, `boot-${entry}/**/*.js`),
+            {ignore: '**/_*', follow: options.follow}
+        );
+        let jsContent = require('./tpl/entry.tpl.js')(frontConfig.js.common, entry, appDir, bootJses, bootEntryJses, pageJses.length);
+
+        fs.writeFileSync(path.join(appDir , entry + '.js'), jsContent);
+    });
+
+    //fs.writeFileSync(path.join(appDir, '.gitignore'), entries.map(entry => entry + '.js').join('\n'));
+}
+
+function buildEntryJs() {
+    let apps = {};
+    let entries = frontConfig.js.entry;
+    let common = frontConfig.js.common;
+
+    entries.forEach(entry => apps[entry] = [`import '${common}';`]);
+
+    for (let appName in appConfig) {
+        let jsAppName = appName.replace('/', '-');
+        let appDir = path.resolve(appConfig[appName].dir + '/front/js', jsAppName);
+        entries.forEach(entry => {
+            if (fs.existsSync(path.resolve(appDir, entry + '.js'))) {
+                apps[entry].push(`import '${jsAppName}/${entry}.js';`);
+            }
+        });
+    }
+
+    entries.forEach(entry => {
+        fs.writeFileSync(path.join(contextDir, entry + '.js'), apps[entry].join('\n'));
+    });
+}
+
+function buildCommonJs() {
+    let commonName = frontConfig.js.common;
+    let commonDir = path.resolve(contextDir, commonName);
+
+    if (!fs.existsSync(commonDir)) {
+        return;
+    }
+
+    let bootJses = glob.sync(
+        path.resolve(commonDir, 'boot/**/*.js'),
+        {ignore: '**/_*', follow: options.follow}
+    );
+
+    if (!bootJses.length) {
+        return;
+    }
+
+    let jsContent = require('./tpl/common.tpl.js')(commonName, commonDir, bootJses);
+
+    fs.writeFileSync(path.join(commonDir , 'index.js'), jsContent);
+    //fs.writeFileSync(path.join(commonDir, '.gitignore'),  'index.js');
+}
+

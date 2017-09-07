@@ -1,0 +1,17 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "glob": "^7.1.1",
+    "meow": "^3.7.0",
+    "pathinfo": "^0.1.0",
+    "uglifyjs-webpack-plugin": "^0.4.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

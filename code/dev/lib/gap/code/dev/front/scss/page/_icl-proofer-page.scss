@@ -1,0 +1,42 @@
+$set-proofer-margin: 20px auto;
+$proofer-page-margin: 20px 120px;
+$proofer-page-padding: 60px 0;
+$proofer-page-color: #b8bcc1;
+$proofer-btn-border: #dfe1e3;
+$proofer-bom-item-bg: #f8f8f9;
+
+.set-proofer-wrap {
+    margin: $set-proofer-margin;
+    width: 960px;
+}
+
+.welcome-wrap,
+.submit-wrap,
+.success-wrap,
+.fail-wrap {
+    color: $proofer-page-color;
+    margin: $proofer-page-margin;
+    padding: $proofer-page-padding;
+    text-align: center;
+
+    .proofer-btn {
+        background: transparent;
+        border: 1px solid $proofer-btn-border;
+        border-radius: 2px;
+        color: $proofer-page-color;
+        padding: 10px 90px;
+    }
+}
+
+.proofer-order-wrap {
+    margin: $proofer-page-margin;
+
+    .bom-item {
+        background: $proofer-bom-item-bg;
+    }
+
+    .add-bom-item {
+        height: 30px;
+        line-height: 30px;
+    }
+}

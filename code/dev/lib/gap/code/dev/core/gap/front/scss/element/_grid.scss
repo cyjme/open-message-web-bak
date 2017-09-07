@@ -1,0 +1,183 @@
+// sass-lint:disable no-vendor-prefixes
+$grid-margin: 0;
+$grid-cell-margin: 0 0 1rem 0;
+$grid-cell-tiny-margin: 0 0 5px 0;
+$grid-cell-small-margin: 0 0 10px 0;
+
+@mixin gap-grid {
+
+    .grid {
+        -webkit-flex-flow: row wrap;
+        //display: -webkit-box;
+        //display: -moz-box;
+        //display: -ms-flexbox;
+        //display: -webkit-flex;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        margin: $grid-margin;
+        padding: 0;
+
+        > .cell {
+            margin: $grid-cell-margin;
+            width: 100%;
+
+            &.cell-tiny {
+                margin: $grid-cell-tiny-margin;
+            }
+
+            &.cell-small {
+                margin: $grid-cell-small-margin;
+            }
+
+            .card {
+                height: 100%;
+            }
+        }
+
+    }
+
+    @include breakpoint(medium) {
+        .grid {
+            &.col2 {
+                > .cell {
+                    width: 49.5%;
+                }
+
+                > .cell1 {
+                    width: 50%;
+                }
+            }
+
+            &.col3 {
+                > .cell {
+                    width: 32%;
+                }
+
+                > .cell1 {
+                    width: 33.33333%;
+                }
+
+                > .cell2 {
+                    width: 66.66666%;
+                }
+
+                &.space {
+                    > .cell1 {
+                        width: 32%;
+                    }
+
+                    > .cell2 {
+                        width: 65%;
+                    }
+                }
+            }
+
+            &.col4 {
+                > .cell {
+                    width: 24.25%;
+                }
+
+                > .cell1 {
+                    width: 25%;
+                }
+
+                > .cell2 {
+                    width: 50%;
+                }
+
+                > .cell3 {
+                    width: 75%;
+                }
+
+                &.space {
+                    > .cell1 {
+                        width: 24%;
+                    }
+
+                    > .cell2 {
+                        width: 49%;
+                    }
+
+                    > .cell3 {
+                        width: 74%;
+                    }
+                }
+            }
+
+            &.col5 {
+                > .cell1 {
+                    width: 20%;
+                }
+
+                > .cell2 {
+                    width: 40%;
+                }
+
+                > .cell3 {
+                    width: 60%;
+                }
+
+                > .cell4 {
+                    width: 80%;
+                }
+
+                &.space {
+                    > .cell1 {
+                        width: 19%;
+                    }
+
+                    > .cell2 {
+                        width: 39%;
+                    }
+
+                    > .cell3 {
+                        width: 59%;
+                    }
+
+                    > .cell4 {
+                        width: 79%;
+                    }
+                }
+
+                &.accting {
+                    margin: $grid-cell-margin;
+
+                    .card {
+                        height: 100%;
+                    }
+                }
+            }
+
+            &.col12 {
+                > .cell {
+                    width: 8.33%;
+                }
+
+                > .cell2 {
+                    width: 16.66%;
+                }
+
+                > .cell3 {
+                    width: 24.99%;
+                }
+
+                > .cell4 {
+                    width: 33.32%;
+                }
+
+                > .cell10 {
+                    width: 83.33%;
+                }
+
+                > .cell11 {
+                    width: 91.66%;
+                }
+
+                > .cell12 {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

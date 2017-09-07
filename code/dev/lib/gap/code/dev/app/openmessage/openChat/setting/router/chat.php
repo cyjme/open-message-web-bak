@@ -1,0 +1,20 @@
+<?php
+$this
+    ->site('www')
+    ->access('public')
+
+    ->get(
+        '/chat/{chatCode:[0-9a-z-]+}',
+        'landChat',
+        'Openmessage\OpenChat\Chat\Ui\LandChatController@show'
+    )
+    ->getOpen(
+        '/create-chat',
+        'createChatByGet',
+        'Openmessage\OpenChat\Chat\Ui\CreateChatController@create'
+    )
+    ->postOpen(
+        '/open/create-chat',
+        'createChat',
+        'Openmessage\OpenChat\Chat\Open\CreateChatController@post'
+    );

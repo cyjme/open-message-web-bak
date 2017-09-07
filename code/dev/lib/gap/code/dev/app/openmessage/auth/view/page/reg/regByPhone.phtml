@@ -1,0 +1,39 @@
+<?php
+$this->layout('layout/msg-auth', [
+    'pageAttr' => [
+        'sendVerifyCodeByPhone' => $this->routePostRest('sendVerifyCodeByPhone'),
+        'regByPhone' => $this->routePost('regByPhone'),
+        'checkVerifyCodeByPhone' => $this->routePostRest('checkVerifyCodeByPhone'),
+        'fetchUserByAccount' => $this->routePostRest('fetchUserByAccount'),
+        'reg-agreement' => $this->routeGet('fetchAgreement')
+    ],
+]);
+?>
+
+<?php $this->section('main'); ?>
+    <section class="main clearfix card">
+        <a href="<?php echo $this->routeGet('massHome');?>" class="back-home"><i class="icon icon-back"></i><?php echo $this->trans('massHome');?></a>
+        <main>
+            <div class="logo">
+                <a href=""><i class="icon icon-logo"></i></a>
+            </div>
+            <?php echo $this->insert('module/menu-main', ['active' => 'phone']); ?>
+            <div class="reg-by-phone-form">
+            </div>
+            <div>
+                <?php echo $this->trans('Has account?'); ?> <a href="<?php echo $this->routeGet('login');?>"><?php echo $this->trans('Login'); ?></a>
+            </div> 
+            <div class="loader"
+                 zon-load="reg.load" data-page="reg/regByPhone">
+            </div>
+        </main>
+        <aside>
+            <div class="auth-img">
+                <div>
+                    <p><strong class="font-xlarge"><?php echo $this->trans('sloganOne'); ?></strong></p>
+                    <p><?php echo $this->trans('sloganTwo'); ?></p>
+                </div>
+            </div>
+        </aside>
+    </section>
+<?php $this->replace(); ?>

@@ -1,0 +1,105 @@
+$time-color: #959595;
+
+$read-max-width: 900px;
+$board-side-width: 200px;
+
+html {
+    background-color: $bg-color;
+
+    body {
+        background-color: $bg-color;
+    }
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, ol, dl, th, td {
+    margin: $zero;
+    padding: $zero;
+}
+
+ul, ol, dl {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+select {
+    @include vendor-prefix('appearance', 'none');
+}
+
+p {
+    font-size: $small-font-size;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.read {
+    max-width: $read-max-width;
+
+    &.center {
+        margin: $center;
+    }
+}
+
+.outer {
+    margin: $center;
+}
+
+.board {
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+.label {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.time {
+    color: $time-color;
+    font-size: $small-font-size;
+}
+
+.box {
+    background-color: $light-gray;
+    border-radius: .3rem;
+    padding: .5rem;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.white-color {
+    color: $white;
+}
+
+@include breakpoint(large) {
+
+    .board {
+        .board-main {
+            margin-right: $board-side-width + 60px;
+        }
+
+        .board-side {
+            position: absolute;
+            right: 40px;
+            top: 0;
+            width: $board-side-width;
+        }
+    }
+}
+
+.font-bold {
+    font-weight: 600;
+}

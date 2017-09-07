@@ -1,0 +1,35 @@
+<?php
+$version = $this->config->get('version');
+$pageAttr = $this->pageAttr ? $this->pageAttr : [];
+$pageAttr['token'] = $this->token();
+$pageAttr['now'] = micro_date();
+$pageAttr['list-trans-group'] = $this->routePostRest('listTransGroup');
+$pageAttr['create-trans-group'] = $this->routePostRest('createTransGroup');
+$pageAttr['localeKey'] = 'zh-cn';
+?><!DOCTYPE html>
+<html lang="<?php echo $this->request->getLocaleKey(); ?>" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?php echo $this->staticUrl('css/auth.css?v=' . $version); ?>">
+    <title><?php echo $this->trans('ideapar'); ?></title>
+    <?php $this->section('style'); ?><?php $this->stop(); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="ipar auth flex-column-center">
+
+<?php $this->section('main'); ?><?php $this->stop(); ?>
+<footer class="footer font-small hide">
+    <span><a href="">关于我们</a><span class="dot">·</span></span>
+    <span><a href="">常见问题</a><span class="dot">·</span></span>
+    <span><a href="">联系我们</a></span>
+    <p>&#169; CopyRight 2015-2017 ideapar.com</p>
+</footer>
+<input type="hidden" id="page-attr"
+       value="<?php echo attr_json($pageAttr); ?>">
+
+<script src="<?php echo $this->staticUrl('js/mass.js?v=' . $version); ?>"></script>
+<?php $this->section('script'); ?><?php $this->stop(); ?>
+</body>
+</html>

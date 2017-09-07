@@ -1,0 +1,15 @@
+<?php
+$class = $this->class ? " class=\"{$this->class}\"" : '';
+?><select name="<?php echo $this->name; ?>"<?php echo $class; ?>>
+    <?php foreach ($this->options as $option) { ?>
+    <?php if ($this->value == $option['value']) { ?>
+        <option selected="selected" value="<?php echo $option['value']; ?>">
+            <?php echo $option['text']; ?>
+        </option>
+    <?php } else { ?>
+        <option value="<?php echo $option['value']; ?>">
+            <?php echo $option['text']; ?>
+        </option>
+    <?php } ?>
+    <?php } ?>
+</select>

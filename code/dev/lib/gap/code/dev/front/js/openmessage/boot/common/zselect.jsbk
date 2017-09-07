@@ -1,0 +1,6 @@
+import {s} from 'zjs/s';
+import {zselect} from 'zjs/elem/zselect';
+
+s('.zselect').forEach((elem) => {
+    zselect(elem);
+});

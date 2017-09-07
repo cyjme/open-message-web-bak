@@ -1,0 +1,4 @@
+class ControllerBase {
+}
+
+export {ControllerBase};

@@ -1,0 +1,90 @@
+#!/bin/bash
+
+#set -ex
+
+if [[ $1 ]]; then
+    baseDir=$1
+else
+    baseDir=`pwd`
+fi
+
+echo -n "Enter baseDir($baseDir) > "
+read inputBaseDir
+
+if [[ $inputBaseDir ]]; then
+    baseDir=$inputBaseDir
+fi
+
+echo -n "Enter baseHost > "
+read baseHost
+
+echo "baseDir=$baseDir"
+echo "baseHost=$baseHost"
+
+echo -n "continue (y/N)? > "
+read isContinue
+
+if [[ "$isContinue" != "y" ]]; then
+    exit 0
+fi
+
+cat <<EOM >"$baseDir/.gaprc"
+baseHost="$baseHost"
+EOM
+
+if [ ! -d "$baseDir/.git" ]; then
+    git init
+    git remote add gap ssh://vcs@project.tecposter.cn/diffusion/6/gap.git
+fi
+
+
+if [ ! -f "$baseDir/readme.md" ]; then
+    echo "author: zjh" > "readme.md"
+    git add .
+    git commit -m 'init'
+fi
+
+if [ ! -d "$baseDir/code/dev/core/gap" ]; then
+    git subtree add --prefix=code/dev/core/gap --squash gap dev
+fi
+
+if [ ! -f "$baseDir/commposer.json" ]; then
+    cp $baseDir/code/dev/core/gap/build/. $baseDir -r
+    chmod 777 "$baseDir/code/cache"
+
+    mv "$baseDir/code/setting/config/config.init.local-default.php" "$baseDir/code/setting/config/config.init.local.php"
+    sed -i -e "s/{tecposter.com}/$baseHost/g" "$baseDir/code/setting/config/config.init.local.php"
+
+    mv "$baseDir/docker/nginx/sites-enabled/default.conf" "$baseDir/docker/nginx/sites-enabled/$baseHost.local.conf"
+    sed -i -e "s/{tecposter.com}/$baseHost/g" "$baseDir/docker/nginx/sites-enabled/$baseHost.local.conf"
+
+    sed -i -e "s/{tecposter.com}/$baseHost/g" "$baseDir/docker-compose.yml"
+fi
+
+if [ ! -d "$baseDir/bin" ]; then
+    mkdir "$baseDir/bin"
+    cd "$baseDir/bin"
+    ln -s ./../code/dev/core/gap/sbin/js-server
+    ln -s ./../code/dev/core/gap/bin/gap.php ./gap
+    ln -s ./../code/dev/core/gap/bin/build-css
+    ln -s ./../code/dev/core/gap/bin/clear
+    ln -s ./../code/dev/core/gap/bin/npm-install
+fi
+
+cd "$baseDir"
+
+if [ ! -L "$baseDir/tool" ]; then
+    ln -s ./code/dev/core/gap/tool .
+fi
+
+if [ ! -d "$baseDir/node_modules" ]; then
+    npm i
+fi
+
+if [ ! -d "$baseDir/code/vendor" ]; then
+    composer install
+fi
+
+npm run build
+# docker-compose up --build -d
+docker-compose up  -d

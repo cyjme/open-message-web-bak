@@ -1,0 +1,44 @@
+<?php
+$this->layout('layout/msg-main', [
+    'pageAttr' => [
+    ],
+]);
+?>
+
+<?php $this->section('main'); ?>
+    <section class="main">
+    <div class="create-wrap">
+        <div class="card">
+            <div class="card-title">
+                <?php echo $this->trans('myApp')?>
+            </div>
+            <div class="card-content">
+            <?php foreach ($this->appSet->getItems() as $app) {?>
+                <div class="card">
+                    <div class="card-title">
+                        <?php echo $app->getName();?>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            <?php echo $app->getDesc();?>
+                        </p>
+                        <p>
+                            key: <?php echo $app->getKey();?>
+                        </p>
+                        <p>
+                            secret: <?php echo $app->getSecret();?>
+                        </p>
+                        <div>
+                            <a href="<?php echo $this->routeGet('createPush',['appCode'=>$app->getAppCode()])?>">
+                                <button class="btn primary"><?php echo $this->trans('createPush')?></button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php }?>
+            </div>
+        </div>
+    </div>
+    </section>
+<?php $this->replace(); ?>
+

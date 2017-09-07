@@ -1,0 +1,26 @@
+<?php
+$menuItems = [
+    'email' => [
+        'text' => $this->trans('email'),
+        'url' => $this->routeUrl('regByEmail'),
+        'class' => 'email',
+    ],
+    'phone' => [
+        'text' => $this->trans('phone'),
+        'url' => $this->routeUrl('regByPhone'),
+        'class' => 'phone',
+    ]
+];
+if ($this->active && isset($menuItems[$this->active])) {
+    $menuItems[$this->active]['class'] .= ' active';
+}
+?>
+<ul class="menu expanded menu-reg">
+<?php foreach ($menuItems as $item) { ?>
+    <li class="<?php echo $item['class']; ?>">
+        <a href="<?php echo $item['url']; ?>">
+            <?php echo $item['text']; ?>
+        </a>
+    </li>
+<?php } ?>
+</ul>

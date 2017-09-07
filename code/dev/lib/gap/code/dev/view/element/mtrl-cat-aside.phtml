@@ -1,0 +1,10 @@
+<aside class="aside">
+    <h3 class="title normal"><?php echo $this->trans('mtrlCat')?></h3>
+    <ul class="first-list">
+        <?php foreach ($this->mtrlCatSet->getItems() as $mtrlCat) { ?>
+            <li class="item first-item">
+                <span><?php echo $mtrlCat->getName(); ?></span>
+            </li>
+        <?php } ?>
+    </ul>
+</aside>
