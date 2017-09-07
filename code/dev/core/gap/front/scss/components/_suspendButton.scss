@@ -1,0 +1,44 @@
+$uploadImgWidth: 80px;
+$uploadImgHeight: 80px;
+
+@mixin gap-suspend-button {
+
+    .img-item,
+    .file-item {
+        min-height: $uploadImgHeight;
+        width: $uploadImgWidth;
+        outline: none;
+        position: relative;
+        text-align: center;
+
+        img {
+            height: $uploadImgHeight;
+            width: $uploadImgWidth;
+        }
+
+        .icon-preview {
+            font-size: 45px;
+        }
+
+        .btn-img,
+        .btn-file {
+            position: absolute;
+            bottom: 0;
+            height: 30px;
+            width: 100%;
+            background: rgba(0,0,0,.3);
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            display: none;
+            z-index: 1;
+        }
+
+        &:hover {
+            .btn-img,
+            .btn-file {
+                display: block;
+            }
+        }
+    }
+}

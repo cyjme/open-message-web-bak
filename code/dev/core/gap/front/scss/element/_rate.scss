@@ -1,0 +1,17 @@
+$rate-color: #e9e9e9 !default;
+$rate-active-color: #f5a623 !default;
+
+@mixin gap-rate {
+
+    .rate {
+        color: $rate-color;
+
+        .rate-item {
+            display: inline-block;
+
+            &.active {
+                color: $rate-active-color;
+            }
+        }
+    }
+}
