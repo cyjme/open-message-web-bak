@@ -1,4 +1,0 @@
-class ControllerBase {
-}
-
-export {ControllerBase};

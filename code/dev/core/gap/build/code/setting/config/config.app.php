@@ -1,4 +1,0 @@
-<?php
-$this
-    ->set('app', [
-    ]);
