@@ -1,0 +1,32 @@
+{
+    "config": {
+        "vendor-dir": "code/vendor",
+        "secure-http": false
+    },
+    "require": {
+        "nikic/fast-route": "^1.0",
+        "symfony/http-foundation": "^3.2",
+        "foil/foil": "^0.6",
+        "hightman/xunsearch": "^1.4",
+        "filp/whoops": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gap\\": "code/dev/core/gap/src/"
+        },
+        "files": [
+            "code/dev/core/gap/fun/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "cmdtest\\Gap\\": "code/dev/core/gap/cmdtest/"
+        }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.1",
+        "squizlabs/php_codesniffer": "^3.0",
+        "phpunit/phpunit": "^5.6",
+        "phpmd/phpmd": "^2.4"
+    }
+}

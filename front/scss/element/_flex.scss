@@ -1,0 +1,59 @@
+@mixin gap-flex {
+
+    .flex {
+        display: flex;
+
+        &.wrap {
+            flex-wrap: wrap;
+        }
+        
+        .align-center {
+            @include vendor-prefix('align-self', 'center');
+        }
+    }
+
+    .flex-start {
+        display: flex;
+        justify-content: flex-start;
+
+        &.top {
+            align-items: flex-start;
+        }
+    }
+
+    .flex-end {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .flex-between {
+        display: flex;
+        justify-content: space-between;
+
+        &.center {
+            align-items: center;
+        }
+
+        .align-center {
+            @include vendor-prefix('align-self', 'center');
+        }
+
+        .align-end {
+            @include vendor-prefix('align-self', 'flex-end');
+        }
+    }
+
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .flex-column-center {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+

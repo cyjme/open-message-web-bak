@@ -1,0 +1,53 @@
+[maxscale]
+threads=4
+
+[CLI Service]
+type=service
+router=cli
+
+[CLI Listener]
+type=listener
+service=CLI Service
+protocol=maxscaled
+socket=default
+
+[db0]
+type=server
+address=db0
+port=3306
+protocol=MySQLBackend
+
+[db1]
+type=server
+address=db1
+port=3306
+protocol=MySQLBackend
+
+[db2]
+type=server
+address=db2
+port=3306
+protocol=MySQLBackend
+
+[RW Split Service]
+type=service
+router=readwritesplit
+servers=db0, db1, db2
+user=maxscale
+passwd=123456789
+enable_root_user=1
+
+[RW Split Listener]
+type=listener
+service=RW Split Service
+protocol=MySQLClient
+port=3306
+
+[RW Split Monitor]
+type=monitor
+module=galeramon
+disable_master_failback=1
+servers=db0,db1,db2
+#monitor_interval=10000
+user=maxscale
+passwd=123456789
