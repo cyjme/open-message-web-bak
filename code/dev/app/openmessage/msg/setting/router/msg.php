@@ -1,0 +1,20 @@
+<?php
+$this
+    ->site('www')
+    ->access('public')
+
+    ->getOpen(
+        '/open/msg/list',
+        'openListMsg',
+        'Openmessage\Msg\Msg\Open\ListMsgController@list'
+    )
+    ->getOpen(
+        '/open/msg/readAllTime',
+        'openGetLastReadAllTime',
+        'Openmessage\Msg\Msg\Open\GetLastReadAllTimeController@show'
+    )
+    ->getOpen(
+        '/open/msg/readAll',
+        'openReadAll',
+        'Openmessage\Msg\Msg\Open\UpdateReadAllTimeController@update'
+    );

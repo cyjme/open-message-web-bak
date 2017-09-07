@@ -1,0 +1,16 @@
+@mixin gap-format {
+
+    .break-all {
+        word-break: break-all;
+    }
+
+    .ellipsis {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .no-break {
+        white-space: nowrap;
+    }
+}

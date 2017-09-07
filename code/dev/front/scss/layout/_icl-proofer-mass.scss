@@ -1,0 +1,112 @@
+$btn-linear-left: #ff0467;
+$btn-linear-right: #fc7437;
+$home-footer-bg: #2b333f;
+$home-bottom-wrap-bg: #3d4856;
+$flow-detail-bg: #394453;
+
+
+html {
+
+    body {
+        background-color: $bg-color;
+        min-height: 100vh;
+        overflow: auto;
+    }
+}
+
+em {
+    color: $red-color;
+}
+
+.header {
+    background: $white;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+
+    .header-wrap {
+        border-bottom: 1px solid $line-dark-color;
+        padding-right: 40px;
+
+        > * {
+            height: 60px;
+            line-height: 60px;
+            vertical-align: top;
+        }
+    }
+
+    .logo {
+        display: inline-block;
+        text-align: center;
+        width: 196px;
+
+        .icon-logo {
+            color: $red-color;
+            font-size: 60px;
+        }
+    }
+
+    .header-menu {
+        display: inline-block;
+        list-style: none;
+        vertical-align: top;
+
+        > li {
+            display: inline-block;
+            padding: 0 20px;
+
+            a {
+                color: $p-color;
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
+
+            &.active {
+                border-bottom: 3px solid $red-color;
+                height: 60px;
+
+                a {
+                    color: $p-dark-color;
+                }
+            }
+        }
+    }
+
+    .header-user {
+        text-align: center;
+    }
+}
+
+.main {
+    height: 100vh;
+    padding-top: 60px;
+}
+
+.advice-ctn {
+    background-color: $btn-primary-bg;
+    border-radius: 50%;
+    bottom: 220px;
+    font-size: 2rem;
+    height: 60px;
+    position: fixed;
+    right: 28px;
+    text-align: center;
+    width: 60px;
+
+    a {
+        color: $white;
+        line-height: 60px;
+    }
+
+    p {
+        color: $white;
+        display: none;
+    }
+
+    &:hover {
+        p {
+            display: block;
+        }
+    }
+}

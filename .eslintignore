@@ -1,0 +1,13 @@
+# /node_modules/* and /bower_components/* ignored by default
+
+code/vendor/*
+code/log/*
+code/site/*
+bin/*
+data/*
+code/dev/core/gap/docker/*
+migrate/*
+sbin/*
+
+code/dev/core/gap/front/js/zjs/editor/wangEditor.js
+code/dev/core/gap/front/js/zjs/upload/qiniu4js.js

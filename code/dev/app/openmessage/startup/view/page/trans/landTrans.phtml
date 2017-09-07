@@ -1,0 +1,108 @@
+<?php $this->layout('layout/openmessage-admin', [
+    'selectedMenu' => 'trans',
+    'pageAttr' => [
+        'apiFetchTrans' => $this->routePostRest('fetchTrans'),
+        'apiUpdateTrans' => $this->routePostRest('updateTrans'),
+        'apiDeleteTrans' => $this->routePostRest('deleteTrans'),
+    ]
+]); ?>
+
+<?php $this->section('main'); ?>
+<div class="read loader" zon-load="startup.load" data-page="trans/landTrans">
+
+<h1>trans</h1>
+
+<div class="card">
+
+<div class="card-divider">
+<form method="get" action="<?php echo $this->routeUrl('landTrans'); ?>">
+    <div class="input-group">
+        <input class="input-group-field" type="search" name="q"
+            value="<?php echo $this->request->query->get('q'); ?>">
+        <div class="input-group-button">
+            <input type="submit" class="button" value="<?php echo $this->trans('submit'); ?>">
+        </div>
+    </div>
+</form>
+</div>
+
+<div class="card-section">
+
+<div class="list underline">
+<?php foreach ($this->transKeySet->getItems() as $transKey) { ?>
+    <div class="item trans-item-wrap">
+        <h3 class="title normal trans-key">
+            <?php echo $transKey->getKey(); ?>
+        </h3>
+        <div class="list dashed closely">
+            <?php foreach ($this->config->get('i18n.locale.enabled') as $localeKey) { ?>
+                <div class="item trans-item"
+                    data-key="<?php echo $transKey->getKey(); ?>"
+                    data-locale-key="<?php echo $localeKey; ?>">
+                    <div class="display clearfix">
+                        <div class="float-left">
+                            <?php echo $localeKey; ?>:
+                            <span class="trans-val dto-value">
+                                <?php echo $this->trans($transKey->getKey(), [], $localeKey); ?>
+                            </span>
+                        </div>
+                        <div class="float-right">
+                            <a href="javascript:;" class="zon" zon-click="update">
+                                <?php echo $this->trans('update'); ?>
+                            </a>
+                            |
+                            <a href="javascript:;" class="zon" zon-click="delete">
+                                <?php echo $this->trans('delete'); ?>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="update-trans-form hide"></div>
+                    <div class="delete-trans-form hide"></div>
+                </div><!-- .trans-item -->
+            <?php } ?>
+        </div>
+    </div><!-- .item -->
+<?php } ?>
+</div><!-- .list -->
+</div><!-- .card-section -->
+</div><!-- .card -->
+
+<?php /*
+<table>
+    <thead>
+        <tr>
+            <th><?php echo $this->trans('trans-key'); ?></th>
+            <th><?php echo $this->trans('trans-value'); ?></th>
+            <th><?php echo $this->trans('action'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->transKeySet->getItems() as $transKey) { ?>
+        <tr>
+            <td><?php echo $transKey->getKey(); ?></td>
+            <td>
+            <?php foreach ($this->config->get('i18n.locale.enabled') as $localeKey) { ?>
+                <?php echo $localeKey; ?>: <?php echo $this->trans($transKey->getKey(), [], $localeKey); ?><br>
+            <?php } ?>
+            </td>
+            <td>
+                <a href="<?php echo $this->routeUrl('updateTrans', [], ['key' => $transKey->getKey()]); ?>">
+                    <?php echo $this->trans('update'); ?>
+                </a>
+                |
+                <a href="<?php echo $this->routeUrl('deleteTrans', [], ['key' => $transKey->getKey()]); ?>">
+                    <?php echo $this->trans('delete'); ?>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+ */ ?>
+
+<?php echo $this->insert('element/pagination', [
+    'pageCount' => $this->transKeySet->getPageCount()
+]); ?>
+</div><!-- .read -->
+
+<?php $this->replace(); ?>

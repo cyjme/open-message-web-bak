@@ -1,0 +1,92 @@
+<?php
+$version = $this->config->get('version');
+$pageAttr = $this->pageAttr ? $this->pageAttr : [];
+$pageAttr['token'] = $this->token();
+$pageAttr['now'] = micro_date();
+$pageAttr['localeKey'] = 'zh-cn';
+$pageAttr['qiniuDomain'] = $this->config->get('qiniu.domain');
+$pageAttr['fromAccToken'] = $this->fromAccToken;
+$pageAttr['toAccToken'] = $this->toAccToken;
+?><!DOCTYPE html>
+<html lang="<?php echo $this->request->getLocaleKey(); ?>" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?php echo $this->staticUrl('css/chat.css?v=' . $version); ?>">
+    <title><?php echo $this->trans('ideapar'); ?></title>
+    <?php $this->section('style'); ?><?php $this->stop(); ?>
+</head>
+<body class="chat-body">
+<div class="layout-container">
+    <div class="layout-main">
+        <div class="header">
+            <div class="search-bar-wraper">
+            </div>
+        </div>
+        <div class="body">
+            <div class="menu-pannel">
+                <div class="profile">
+                <div class="user-avatar big-52 with-border" style="background-image: url('https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg');"></div>
+                </div>
+                <ul class="main-menus">
+                    <li class="menu-item">
+                        test
+                    </li>
+                    <li class="menu-item">
+                        test
+                    </li>
+                </ul>
+                <ul class="extra-options">
+
+                </ul>
+            </div>
+            <div class="menu-pannel-body">
+                <div class="sub-menu-pannel" class="conv-list-pannel">
+                    <div class="conv-lists-box" id="user-lists">
+                        <div class="conv-lists" id="conv-lists"></div>
+                    </div>
+                </div>
+
+                <div class="content-pannel">
+                    <div class="conv-detail-pannel">
+                        <div class="nocontent-logo"></div>
+                        <div class="content-pannel-body chat-box-new" id="chat-box">
+                            <div class="main-chat chat-items" id="chat-lists">
+                                <div class="msg-items" id="chatLineHolder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="send-msg-box-wrapper">
+                            <div class="input-area" style="display:none;">
+                                <ul class="tool-bar">
+                                    <li class="tool-item">
+                                        <i class="iconfont tool-icon tipper-attached emotion_btn" title="表情"></i>
+                                        <div class="faceDiv"></div>
+                                    </li>
+                                    <li class="tool-item">
+                                        <i class="iconfont tool-icon icon-card tipper-attached" onclick="upload()" title="图片"></i>
+                                    </li>
+                                </ul>
+                                <span class="user-guide">Enter 发送 , Ctrl+Enter 换行</span>
+                                <div class="msg-box" style="height:100%;">
+                                    <textarea class="textarea input-msg-box" onkeydown="chat.keySend(event);" id="chattext"></textarea>
+                                </div>
+                            </div>
+                            <div class="action-area" style="display:none;">
+                                <a href="javascript:;" class="send-message-button" onclick="chat.sendMessage()">发送</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="page-attr"
+       value="<?php echo attr_json($pageAttr); ?>">
+
+<script src="<?php echo $this->staticUrl('js/chat.js?v=' . $version); ?>"></script>
+<?php $this->section('script'); ?><?php $this->stop(); ?>
+</body>
+</html>

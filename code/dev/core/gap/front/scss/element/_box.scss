@@ -1,0 +1,210 @@
+// sass-lint:disable no-important
+$xs: 5px;
+$sm: 10px;
+$m: 15px;
+$md: 20px;
+$lg: 30px;
+
+@mixin gap-box {
+
+    //none
+
+    $none: (
+        p-n: padding,
+        p-l-n: padding-left,
+        p-r-n: padding-right,
+        p-t-n: padding-top,
+        p-b-n: padding-bottom,
+        m-n: margin,
+        m-l-n: margin-left,
+        m-r-n: margin-right,
+        m-t-n: margin-top,
+        m-b-n: margin-bottom,
+    );
+
+    //padding
+
+    $padding: (
+        p-xs: $xs,
+        p-sm: $sm,
+        p-m: $m,
+        p-md: $md,
+        p-lg: $lg,
+        p-w-xs: 0 $xs,
+        p-w-sm: 0 $sm,
+        p-w-m: 0 $m,
+        p-w-md: 0 $md,
+        p-w-lg: 0 $lg,
+        p-h-xs: $xs 0,
+        p-h-sm: $sm 0,
+        p-h-m: $m 0,
+        p-h-md: $md 0,
+        p-h-lg: $lg 0,
+    );
+
+    //padding-left
+
+    $paddingLeft: (
+        p-l-xs: $xs,
+        p-l-sm: $sm,
+        p-l-m: $m,
+        p-l-md: $md,
+        p-l-lg: $lg
+    );
+
+    //padding-right
+
+    $paddingRight: (
+        p-r-xs: $xs,
+        p-r-sm: $sm,
+        p-r-m: $m,
+        p-r-md: $md,
+        p-r-lg: $lg
+    );
+
+    //padding-top
+
+    $paddingTop: (
+        p-t-xs: $xs,
+        p-t-sm: $sm,
+        p-t-m: $m,
+        p-t-md: $md,
+        p-t-lg: $lg
+    );
+
+    //padding-bottom
+
+    $paddingBottom: (
+        p-b-xs: $xs,
+        p-b-sm: $sm,
+        p-b-m: $m,
+        p-b-md: $md,
+        p-b-lg: $lg
+    );
+
+    //margin
+
+    $margin: (
+        m-xs: $xs,
+        m-sm: $sm,
+        m-m: $m,
+        m-md: $md,
+        m-lg: $lg,
+        m-w-xs: 0 $xs,
+        m-w-sm: 0 $sm,
+        m-w-m: 0 $m,
+        m-w-md: 0 $md,
+        m-w-lg: 0 $lg,
+        m-h-xs: $xs 0,
+        m-h-sm: $sm 0,
+        m-h-m: $m 0,
+        m-h-md: $md 0,
+        m-h-lg: $lg 0,
+    );
+
+    //margin-left
+
+    $marginLeft: (
+        m-l-xs: $xs,
+        m-l-sm: $sm,
+        m-l-m: $m,
+        m-l-md: $md,
+        m-l-lg: $lg
+    );
+
+    //margin-right
+
+    $marginRight: (
+        m-r-xs: $xs,
+        m-r-sm: $sm,
+        m-r-m: $m,
+        m-r-md: $md,
+        m-r-lg: $lg
+    );
+
+    //margin-top
+
+    $marginTop: (
+        m-t-xs: $xs,
+        m-t-sm: $sm,
+        m-t-m: $m,
+        m-t-md: $md,
+        m-t-lg: $lg
+    );
+
+    //margin-bottom
+
+    $marginBottom: (
+        m-b-xs: $xs,
+        m-b-sm: $sm,
+        m-b-m: $m,
+        m-b-md: $md,
+        m-b-lg: $lg
+    );
+
+    @each $key, $value in $none {
+        .#{$key} {
+            #{$value}: 0 !important;
+        }
+    }
+
+    @each $key, $value in $padding {
+        .#{$key} {
+            padding: $value;
+        }
+    }
+
+    @each $key, $value in $paddingLeft {
+        .#{$key} {
+            padding-left: $value;
+        }
+    }
+
+    @each $key, $value in $paddingRight {
+        .#{$key} {
+            padding-right: $value;
+        }
+    }
+
+    @each $key, $value in $paddingTop {
+        .#{$key} {
+            padding-top: $value;
+        }
+    }
+
+    @each $key, $value in $paddingBottom {
+        .#{$key} {
+            padding-bottom: $value;
+        }
+    }
+
+    @each $key, $value in $margin {
+        .#{$key} {
+            margin: $value;
+        }
+    }
+
+    @each $key, $value in $marginLeft {
+        .#{$key} {
+            margin-left: $value;
+        }
+    }
+
+    @each $key, $value in $marginRight {
+        .#{$key} {
+            margin-right: $value;
+        }
+    }
+
+    @each $key, $value in $marginTop {
+        .#{$key} {
+            margin-top: $value;
+        }
+    }
+
+    @each $key, $value in $marginBottom {
+        .#{$key} {
+            margin-bottom: $value;
+        }
+    }
+}

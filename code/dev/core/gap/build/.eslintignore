@@ -1,0 +1,10 @@
+# /node_modules/* and /bower_components/* ignored by default
+
+code/vendor/*
+code/log/*
+code/site/*
+bin/*
+data/*
+code/dev/core/gap/docker/*
+migrate/*
+sbin/*

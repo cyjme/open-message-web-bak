@@ -1,0 +1,45 @@
+<?php
+$this
+    ->site('www')
+    ->access('public')
+
+    ->get(
+        '/admin/meta',
+        'landMeta',
+        'Openmessage\Startup\Meta\Ui\LandMetaController@show'
+    )
+    ->get(
+        '/admin/fetch-meta',
+        'fetchMeta',
+        'Openmessage\Startup\Meta\Ui\FetchMetaController@show'
+    )
+    ->get(
+        '/admin/create-meta',
+        'createMeta',
+        'Openmessage\Startup\Meta\Ui\CreateMetaController@show'
+    )
+    ->post(
+        '/admin/create-meta',
+        'createMetaPost',
+        'Openmessage\Startup\Meta\Ui\CreateMetaController@post'
+    )
+    ->get(
+        '/admin/update-meta',
+        'updateMeta',
+        'Openmessage\Startup\Meta\Ui\UpdateMetaController@show'
+    )
+    ->post(
+        '/admin/save-meta',
+        'saveMetaPost',
+        'Openmessage\Startup\Meta\Ui\SaveMetaController@post'
+    )
+    ->get(
+        '/admin/delete-meta',
+        'deleteMeta',
+        'Openmessage\Startup\Meta\Ui\DeleteMetaController@show'
+    )
+    ->post(
+        '/admin/delete-meta',
+        'deleteMetaPost',
+        'Openmessage\Startup\Meta\Ui\DeleteMetaController@post'
+    );

@@ -1,0 +1,42 @@
+$timeline-border: #dfe1e3 !default;
+$timeline-margin: 200px !default;
+$timeline-padding: 10px !default;
+$timeline-item-padding: 25px !default;
+$timeline-left-width: 180px !default;
+$timeline-right-margin: 20px !default;
+
+@mixin gap-timeline {
+
+    .timeline {
+        border-left: 2px solid $timeline-border;
+        margin-left: $timeline-margin;
+        padding: $timeline-padding 0;
+        position: relative;
+
+        .item {
+            padding-bottom: $timeline-item-padding;
+
+            &:last-child {
+                padding: $zero;
+            }
+
+            .left {
+                position: absolute;
+                left: -$timeline-margin;
+                text-align: right;
+                width: $timeline-left-width;
+            }
+
+            .middle {
+                background: $white;
+                position: absolute;
+                left: -9px;
+                z-index: 1;
+            }
+
+            .right {
+                margin-left: $timeline-right-margin;
+            }
+        }
+    }
+}

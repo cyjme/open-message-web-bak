@@ -1,0 +1,185 @@
+$red: #ed454c;
+$gary: #999;
+$body-padding: 20px 0;
+$menu-font-color: #bbbcc1;
+$menu-font-color-active: #474a52;
+$dot-margin: 0 3px;
+
+html {
+    height: 100%;
+
+    body {
+        min-height: 100%;
+        padding: $body-padding;
+    }
+}
+
+.main {
+    position: relative;
+
+    .back-home {
+        color: $menu-font-color;
+        font-size: 1.5rem;
+        left: 1rem;
+        position: absolute;
+        top: 1rem;
+    }
+
+    .menu-reg {
+        margin: $center;
+    }
+
+    .logo {
+        font-size: 60px;
+        text-align: center;
+
+        a {
+            color: $red;
+        }
+    }
+
+    input {
+        &:focus {
+            border-color: $red;
+            box-shadow: none;
+        }
+    }
+
+    aside {
+        display: none;
+    }
+
+    main {
+        padding: 40px;
+        width: 100%;
+
+        .code-area {
+            display: flex;
+        }
+
+        .code-btn-ctn {
+            flex-basis: 50%;
+            padding-left: 1rem;
+        }
+
+        button {
+            background-color: $red;
+
+            &:hover {
+                background-color: darken($red, 15%);
+            }
+
+            &:focus {
+                background-color: darken($red, 15%);
+            }
+
+            &[disabled] {
+                background-color: $red;
+            }
+        }
+
+        .code-sent {
+            background-color: $gary;
+        }
+    }
+
+    .menu {
+        color: $menu-font-color;
+        margin-bottom: 1rem;
+        text-align: center;
+
+        .active {
+            a {
+                background: $white;
+                border-bottom: 2px solid $red;
+                color: $menu-font-color-active;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 764px) {
+    .main {
+        max-width: 1200px;
+        min-width: 400px;
+        width: 100%;
+
+        main {
+            float: left;
+            width: 400px;
+        }
+
+        aside {
+            display: block;
+            float: right;
+            height: 100%;
+            width: calc(100% - 400px);
+
+            .auth-img {
+                color: $white;
+                height: 600px;
+            }
+        }
+    }
+}
+
+.footer {
+    color: $gary;
+    text-align: center;
+
+    .dot {
+        margin: $dot-margin;
+    }
+
+    a {
+        color: $gary;
+    }
+}
+
+.reset-by-account-form {
+    margin-top: 2rem;
+
+    > div {
+        &:nth-child(1) {
+            border-bottom-width: 0;
+            margin: $center;
+            padding: 1rem 0;
+            text-align: center;
+            width: 360px;
+        }
+    }
+
+    form {
+        margin: $center;
+        padding: 30px;
+        width: 360px;
+  }
+}
+
+.auth-img {
+    background: url('/img/group.png') no-repeat;
+    background-size: cover;
+    position: relative;
+
+    div {
+        bottom: 6rem;
+        left: 2rem;
+        position: absolute;
+    }
+}
+
+.reg-by-email-form {
+    margin: $center;
+}
+
+.reg-by-phone-form {
+    margin: $center;
+}
+
+.login-by-email-form {
+    margin: $center;
+}
+
+.login-by-phone-form {
+    margin: $center;
+}

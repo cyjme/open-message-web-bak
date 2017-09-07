@@ -1,0 +1,11 @@
+<ul class="menu vertical" id="lists">
+    <?php foreach ($this->menu as $key => $item) { ?>
+    <?php $class = ($key == $this->selectedMenu) ? $key . ' active' : $key; ?>
+        <li class="<?php echo $class; ?>">
+            <a href="<?php echo $this->routeUrl($item['route']); ?>">
+                <i class="icon <?php echo $item['icon']; ?>"></i>
+                <?php echo $this->trans($item['title']); ?>
+            </a>
+        </li>
+    <?php } ?>
+</ul>

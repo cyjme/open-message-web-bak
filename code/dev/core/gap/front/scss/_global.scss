@@ -1,0 +1,74 @@
+@import 'util/util';
+
+//  Global
+$body-font-family: Helvetica, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', Heiti, '黑体';
+
+$zero: 0;
+$none: none;
+$center: 0 auto;
+
+$gap-palette: (
+    p-color: #7b92fc,
+    p-dark-color: #4465c8,
+    p-light-color: #afc0fd,
+) !default;
+
+$p-color: map-get($gap-palette, p-color);
+$p-dark-color: map-get($gap-palette, p-dark-color);
+$p-light-color: map-get($gap-palette, p-light-color);
+
+$bg-color: #f8f8f8 !default;
+
+$line-dark-color: #e2e2e5 !default;
+$line-light-color: #efeff1 !default;
+
+$shadow-light: 0 2px 4px 0 #e2e2e5 !default;
+$shadow-normal: 0 2px 10px 0 #e2e2e5 !default;
+$shadow-dark: 0 2px 4px 0 #93939c !default;
+
+$black-color: #4b4a54 !default;
+$dark-gray-color: #93939c !default;
+$light-gray-color: #bebfc5 !default;
+
+$red-color: #ed454c !default;
+
+$title-size: (
+    'xlarge': rem-calc(24),
+    'large': rem-calc(18),
+    'normal': rem-calc(16),
+    'small': rem-calc(14),
+    'tiny': rem-calc(12),
+) !default;
+
+$small-font-size: rem-calc(14);
+$tiny-font-size: rem-calc(12);
+
+//  Vendor-prefix
+
+@mixin vendor-prefix($name, $value) {
+    @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$vendor}#{$name}: #{$value};
+    }
+}
+
+//font-size
+
+@each $key, $value in $title-size {
+    .font-#{$key} {
+        font-size: $value;
+    }
+}
+
+//clearfix
+
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}

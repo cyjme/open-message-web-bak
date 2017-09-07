@@ -1,0 +1,27 @@
+<?php $this->layout('layout/openmessage-admin', [
+    'selectedMenu' => 'trans'
+]); ?>
+
+<?php $this->section('main'); ?>
+<h1><?php echo $this->trans('delete-trans'); ?></h1>
+
+<form method="post" action="<?php echo $this->routeUrl('deleteTransPost'); ?>">
+
+    <?php echo $this->csrf(); ?>
+    <input type="hidden" name="key" value="<?php echo $this->key; ?>">
+
+    <strong><?php echo $this->key; ?></strong> 
+    <ul>
+    <?php foreach ($this->config->get('i18n.locale.enabled') as $localeKey) { ?>
+        <li>
+            <?php echo $localeKey; ?>: <?php echo $this->trans($this->key, [], $localeKey); ?>
+        </li>
+    <?php } ?>
+    </ul>
+
+    <input type="submit" class="button small" value="<?php echo $this->trans('submit'); ?>">
+
+    <a href="<?php echo $this->routeUrl('landTrans'); ?>"><?php echo $this->trans('cancel'); ?></a>
+</form>
+
+<?php $this->replace(); ?>

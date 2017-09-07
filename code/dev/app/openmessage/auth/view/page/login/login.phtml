@@ -1,0 +1,37 @@
+<?php
+$this->layout('layout/msg-auth', [
+    'pageAttr' => [
+        'loginByEmail' => $this->routePost('loginByEmail'),
+        'loginByPhone' => $this->routePost('loginByPhone'),
+        'regByEmail' => $this->routeGet('regByEmail'),
+        'resetByAccount' => $this->routeGet('resetByAccount'),
+        'fetchUserByAccount' => $this->routePostRest('fetchUserByAccount'),
+        'verifyPasswordByPhone' => $this->routePostRest('verifyPasswordByPhone'),
+        'verifyPasswordByEmail' => $this->routePostRest('verifyPasswordByEmail'),
+    ],
+]);
+?>
+
+<?php $this->section('main'); ?>
+<section class="main clearfix card">
+    <a href="<?php echo $this->routeGet('massHome');?>" class="back-home"><i class="icon icon-back"></i><?php echo $this->trans('massHome');?></a>
+    <main>
+        <div class="logo">
+            <a href=""><i class="icon icon-logo"></i></a>
+        </div>
+        <div class="login-form">
+        </div>
+        <div class="loader"
+             zon-load="login.load" data-page="login/login">
+        </div>
+    </main>
+    <aside>
+        <div class="auth-img">
+            <div>
+                <p><strong class="font-xlarge"><?php echo $this->trans('sloganOne'); ?></strong></p>
+                <p><?php echo $this->trans('sloganTwo'); ?></p>
+            </div>
+        </div>
+    </aside>
+</section>
+<?php $this->replace(); ?>
