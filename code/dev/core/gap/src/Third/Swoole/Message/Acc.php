@@ -19,13 +19,13 @@ class Acc extends MessageBase
     }
 
     //用户登录，检查用户的 token 获取 accId, 把 AccId 和 fd 放入 cache
-    public function login($token, $fd)
+    public function login($accToken, $fd)
     {
-        $accId = $this->getAccIdByToken($token);
-        if ($accId === 0) {
-            return 0;
-        }
-        $this->cache->hset($accId, 'fd', $fd);
+        // $accId = $this->getAccIdByToken($token);
+        // if ($accId === 0) {
+        //     return 0;
+        // }
+        $this->cache->hset($accToken, 'fd', $fd);
     }
 
     protected function getAccIdByToken($token)

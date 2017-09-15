@@ -83,10 +83,13 @@ function run(options) {
         clientLogLevel: 'none',
         headers: { 'X-Custom-Header': 'yes' },
         disableHostCheck: true,
+        watchOptions: {
+            poll: true
+        }
     });
 
     console.log('server start listening');
-    server.listen(8787, '0.0.0.0');
+    server.listen(serverPort, '0.0.0.0');
 }
 
 
@@ -99,6 +102,7 @@ var cli = meow({
          ./bin/build-js.js [options],
 
         Options:
+            --port=8787
             --source-map
             --minimize
     `
@@ -109,12 +113,15 @@ var cli = meow({
     default: {
         'minimize': 'false',
         'source-map': 'true',
-        'uglify': 'false'
+        'uglify': 'false',
+        'port': '8787'
     }
 });
 
 var sourceMap = cli.flags.sourceMap === 'false' ? false : true;
 var minimize = cli.flags.minimize === 'true' ? true : false;
+
+var serverPort = parseInt(cli.flags.port);
 
 options.plugins = [];
 

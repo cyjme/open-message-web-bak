@@ -14,7 +14,7 @@ class LandChatController extends ControllerBase
 
         return $this->view('page/landChat', [
             'fromAccToken' => $chat->getFromAccToken(),
-            'toAccToken' => $chat->toAccToken()
+            'toAccToken' => $chat->getToAccToken()
         ]);
     }
 }

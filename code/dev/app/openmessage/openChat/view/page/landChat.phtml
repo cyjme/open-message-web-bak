@@ -5,6 +5,7 @@ $pageAttr['token'] = $this->token();
 $pageAttr['now'] = micro_date();
 $pageAttr['localeKey'] = 'zh-cn';
 $pageAttr['qiniuDomain'] = $this->config->get('qiniu.domain');
+$pageAttr['fetchUpToken'] = $this->routeGetRest('fetchUpToken');
 $pageAttr['fromAccToken'] = $this->fromAccToken;
 $pageAttr['toAccToken'] = $this->toAccToken;
 ?><!DOCTYPE html>
@@ -37,45 +38,60 @@ $pageAttr['toAccToken'] = $this->toAccToken;
                     </li>
                 </ul>
                 <ul class="extra-options">
-
                 </ul>
             </div>
             <div class="menu-pannel-body">
-                <div class="sub-menu-pannel" class="conv-list-pannel">
-                    <div class="conv-lists-box" id="user-lists">
-                        <div class="conv-lists" id="conv-lists"></div>
+                <div class="sub-menu-pannel" class="contact-list-pannel">
+                    <div class="contact-lists-box" id="user-lists">
+                        <div class="contact-lists" id="contact-lists">
+                            <div class="list-item contact-item context-menu contact-item-company" accToken="">
+                                <i class="iconfont icon-delete-contact tipper-attached"></i>
+                                <div class="avatar-wrap">
+                                    <div class="user-avatar normal" style="background-image: url(&quot;https://static.dingtalk.com/media/lALOAFF1eczIzMg_200_200.png_60x60q90.jpg&quot;);"></div>
+                                </div>
+                                <div class="contact-item-content">
+                                    <div class="title-wrap">
+                                        <div class="name-wrap">
+                                            <span>Jason</span>
+                                        </div>
+                                        <span class="time">10-12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="content-pannel">
-                    <div class="conv-detail-pannel">
+                    <div class="contact-detail-pannel">
                         <div class="nocontent-logo"></div>
+                        <div class="content-pannel-head chat-head">
+                            this is 
+                        </div>
                         <div class="content-pannel-body chat-box-new" id="chat-box">
                             <div class="main-chat chat-items" id="chat-lists">
-                                <div class="msg-items" id="chatLineHolder">
+                                <div class="msg-items chat-item" id="chat-item-acc-598d2337asdf2">
+
                                 </div>
                             </div>
                         </div>
                         <div class="send-msg-box-wrapper">
-                            <div class="input-area" style="display:none;">
-                                <ul class="tool-bar">
-                                    <li class="tool-item">
-                                        <i class="iconfont tool-icon tipper-attached emotion_btn" title="表情"></i>
-                                        <div class="faceDiv"></div>
-                                    </li>
-                                    <li class="tool-item">
-                                        <i class="iconfont tool-icon icon-card tipper-attached" onclick="upload()" title="图片"></i>
-                                    </li>
-                                </ul>
-                                <span class="user-guide">Enter 发送 , Ctrl+Enter 换行</span>
-                                <div class="msg-box" style="height:100%;">
-                                    <textarea class="textarea input-msg-box" onkeydown="chat.keySend(event);" id="chattext"></textarea>
-                                </div>
-                            </div>
-                            <div class="action-area" style="display:none;">
-                                <a href="javascript:;" class="send-message-button" onclick="chat.sendMessage()">发送</a>
-                            </div>
-                        </div>
+								<div class="input-area" style="">
+									<ul class="tool-bar">
+										<li class="tool-item">
+											<i class="icon icon-upload-file-chat" id="btn-upload" title="表情"></i>
+											<div class="faceDiv"></div>
+										</li>
+									</ul>
+									<span class="user-guide">Ctrl+Enter 发送, Enter 换行</span>
+									<div class="msg-box" style="height:100%;">
+										<textarea class="textarea input-msg-box" id="chat-text"></textarea>
+									</div>
+								</div>
+								<div class="action-area" style="" id="send-button">
+									<a href="javascript:;" class="send-message-button">发送</a>
+								</div>
+							</div>
                     </div>
                 </div>
             </div>

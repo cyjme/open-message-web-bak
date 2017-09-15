@@ -9,7 +9,8 @@
         "foil/foil": "^0.6",
         "hightman/xunsearch": "^1.4",
         "filp/whoops": "^2.1",
-        "bshaffer/oauth2-server-php": "^1.9"
+        "bshaffer/oauth2-server-php": "^1.9",
+        "qiniu/php-sdk": "^7.1"
     },
     "autoload": {
         "psr-4": {

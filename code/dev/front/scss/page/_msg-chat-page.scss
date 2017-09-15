@@ -1,11 +1,37 @@
 $layout-main-box-shadow: rgba(0, 0, 0, .15);
-$header: rgb(0, 140, 238);
+$header: #ed454c;
 $white: #fff;
 $header-boder-bottom: rgb(230, 229, 230);
 $menu-pannel-bg-color: rgb(228, 234, 244);
 $menu-pannel-border-right: rgb(221, 220, 221);
 $menu-color: #707275;
 $menu-pannel-span-color: rgb(149, 214, 239);
+
+ol, ul {
+    list-style: outside none none;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-size-adjust: inherit;
+    font-stretch: inherit;
+    font-feature-settings: inherit;
+    font-language-override: inherit;
+    font-kerning: inherit;
+    font-synthesis: inherit;
+    font-variant: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+.clearfix {
+    overflow: auto;_height:1%
+}
 
 .layout-container {
     align-items: center;
@@ -99,21 +125,21 @@ $menu-pannel-span-color: rgb(149, 214, 239);
     position: relative;
 }
 
-.user-avatar {
-    .normal {
-        background-clip: content-box;
-        background-size: cover;
-        border-radius: 50%;
-        box-sizing: border-box;
-        display: inline-block;
-        height: 38px;
-        overflow: hidden;
-        overflow-wrap: normal;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 38px;
-    }
+.user-avatar.normal{
+    background-clip: content-box;
+    background-size: cover;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 38px;
+    overflow: hidden;
+    overflow-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 38px;
+}
 
+.user-avatar {
     .avatar-text {
         color: $white;
         display: table-cell;
@@ -144,27 +170,400 @@ $menu-pannel-span-color: rgb(149, 214, 239);
 }
 
 .sub-menu-pannel {
+    position: relative;
     flex: 0 1 auto;
+    width: 233px;
     height: 100%;
+    background-color: rgb(245, 249, 255);
+    overflow-x: hidden;
+    border-right: 1px solid rgb(230, 229, 230);
     overflow-y: auto;
+    -moz-user-select: none;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .contact-lists-box {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .contact-lists {
+
+            .active {
+                background-color: #f9e0e1;
+            }
+
+            .contact-item {
+                box-sizing: border-box;
+                cursor: pointer;
+                padding: 8px 0px;
+                height: 55px;
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                position: relative;
+
+                .avatar-wrap {
+                    flex: 0 0 38px;
+                    margin-right: 7px;
+                    width: 38px;
+                    height: 38px;
+                }
+
+                .contact-item-content {
+                    flex: 1 1 auto;
+                    min-width: 0px;
+
+                    .title-wrap {
+                        display: flex;
+                        margin-bottom: 4px;
+
+                        .name-wrap {
+                            flex: 1 1 auto;
+                            min-width: 0px;
+                            display: flex;
+                            align-items: center;
+
+                            .name {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow-wrap: normal;
+                                font-size: 13px;
+                                color: rgb(34, 34, 34);
+                                flex: 0 1 auto;
+                            }
+                        }
+
+                        .time {
+                            flex: 0 0 auto;
+                            color: rgb(189, 190, 191);
+                            font-size: 12px;
+                            padding-left: 4px;
+                            transform: scale(0.9);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.content-pannel > div{
+        display: flex;
+        flex-flow: column wrap;
+        height: 100%;
+}
+
+.content-pannel{
+    height: 100%;
+    background-color: #f8fbff;
     overflow-x: hidden;
     overflow: hidden;
+    border-bottom-right-radius: 3px;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    flex: 1 0 580px;
     position: relative;
-    width: 233px;
-    background-color: #f5f9ff;
-    border-right: 1px solid #e6e5e6;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: column nowrap;
-    -moz-flex-flow: column nowrap;
-    flex-flow: column nowrap;
+
+    .content-pannel-body {
+        flex: 1 1 0%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .contact-detail-pannel {
+        position: relative;
+
+        .content-pannel-head {
+            //暂不使用
+            display:none;
+        }
+
+        .content-pannel-body {
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-flow: row nowrap;
+
+            .chat-items {
+                -moz-box-flex: 1;
+                flex: 1 1 0%;
+                overflow-y: auto;
+                position: relative;
+
+                .msg-items {
+                    position: absolute;
+                    box-sizing: border-box;
+                    min-height: 100%;
+                    min-width: 550px;
+                    width: 100%;
+                    padding: 4px 16px 16px;
+
+                    .msg-item {
+                        margin-top: 20px;
+                        margin-bottom: 22px;
+
+                        &.me{
+                            .msg-status {
+
+                            }
+                            .msg-profile-info {
+                                min-height: 23px;
+
+                                .profile-wrp {
+                                    display: inline-block;
+                                    float: right;
+                                    padding-right: 45px;
+                                }
+
+                                .name {
+                                    margin-bottom: 4px;
+                                    color: rgb(142, 151, 161);
+                                    font-size: 12px;
+                                    text-align: right;
+                                    overflow: hidden;
+                                }
+                                .msg-time {
+                                    float: right;
+                                    color: rgb(189, 190, 191);
+                                    font-size: 12px;
+                                    margin: 0px 6px;
+                                    display: inline-block;
+                                    transform: scale(0.9);
+                                }
+                            }
+                            .avatar {
+                                width: 38px;
+                                height: 38px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow-wrap: normal;
+                                display: inline-block;
+                                box-sizing: border-box;
+                                background-size: cover;
+                                background-clip: content-box;
+                                border-radius: 50%;
+                                float: right;
+                                margin-left: 0px;
+                                margin-right: 7px;
+                                cursor: pointer;
+                            }
+
+                            .msg-bubble-box {
+                                float: right;
+
+                                .msg-bubble-area{
+                                    padding-left: 140px;
+                                    padding-left: 0px;
+                                    float: right;
+                                    clear: both;
+                                    position: relative;
+                                    margin-bottom: 3px;
+
+                                    .msg-bubble {
+                                        position: relative;
+                                        min-height: 21px;
+                                        float: right;
+                                        clear: both;
+                                        padding: 5px 11px;
+                                        border: 1px solid rgb(225, 224, 228);
+                                        border-radius: 6px;
+                                        background-color: rgb(255, 255, 255);
+                                        line-height: 21px;
+                                        width: auto;
+                                        max-width: 300px;
+                                        overflow: hidden;
+                                        transition: background-color 0.25s ease 0s;
+
+                                        .text {
+                                            white-space: pre-wrap;
+                                            max-width: 100%;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+
+                        &.not-me{
+
+                            .msg-status {
+
+                            }
+                            .msg-profile-info {
+                                min-height: 23px;
+
+                                .profile-wrp {
+                                    display: inline-block;
+                                    float: left;
+                                    padding-left: 45px;
+                                }
+
+                                .name {
+                                    margin-bottom: 4px;
+                                    color: rgb(142, 151, 161);
+                                    font-size: 12px;
+                                    text-align: left;
+                                    overflow: hidden;
+                                }
+                                .msg-time {
+                                    float: left;
+                                    color: rgb(189, 190, 191);
+                                    font-size: 12px;
+                                    margin: 0px 6px;
+                                    display: inline-block;
+                                    transform: scale(0.9);
+                                }
+                            }
+                            .avatar {
+                                width: 38px;
+                                height: 38px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow-wrap: normal;
+                                display: inline-block;
+                                box-sizing: border-box;
+                                background-size: cover;
+                                background-clip: content-box;
+                                border-radius: 50%;
+                                float: left;
+                                margin-left: 0px;
+                                margin-right: 7px;
+                                cursor: pointer;
+                            }
+
+                            .msg-bubble-box {
+                                float: left;
+
+                                .msg-bubble-area{
+                                    padding-right: 140px;
+                                    padding-left: 0px;
+                                    float: left;
+                                    clear: both;
+                                    position: relative;
+                                    margin-bottom: 3px;
+
+                                    .msg-bubble {
+                                        position: relative;
+                                        min-height: 21px;
+                                        float: left;
+                                        clear: both;
+                                        padding: 5px 11px;
+                                        border: 1px solid rgb(225, 224, 228);
+                                        border-radius: 6px;
+                                        background-color: rgb(255, 255, 255);
+                                        line-height: 21px;
+                                        width: auto;
+                                        max-width: 300px;
+                                        overflow: hidden;
+                                        transition: background-color 0.25s ease 0s;
+
+                                        .text {
+                                            white-space: pre-wrap;
+                                            max-width: 100%;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+    }
+
 }
+
+.contact-detail-pannel .send-msg-box-wrapper {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    -moz-box-align: stretch;
+    align-items: stretch;
+    box-sizing: border-box;
+    min-height: 106px;
+    width: 100%;
+    height: 106px;
+    border-top: 1px solid rgb(230, 229, 230);
+    background-color: rgb(245, 249, 255);
+    border-bottom-right-radius: 3px;
+}
+.contact-detail-pannel .send-msg-box-wrapper .input-area {
+    -moz-box-flex: 1;
+    flex: 1 1 0%;
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+}
+
+.contact-detail-pannel .send-msg-box-wrapper .input-area {
+    -moz-box-flex: 1;
+    flex: 1 1 0%;
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+}
+.contact-detail-pannel .send-msg-box-wrapper .input-area .tool-bar {
+
+    .icon {
+        color:red;
+    }
+    padding: 7px 7px 7px 13px;
+    width: 90%;
+}
+.contact-detail-pannel .send-msg-box-wrapper .input-area .user-guide {
+    color: rgb(189, 190, 191);
+    font-size: 12px;
+    position: absolute;
+    right: 8px;
+    top: 6px;
+}
+
+.contact-detail-pannel .send-msg-box-wrapper .input-area .msg-box {
+    box-sizing: border-box;
+    position: relative;
+    flex: 1 1 0%;
+    display: flex;
+    padding: 0px 1px 0px 10px;
+}
+.contact-detail-pannel .send-msg-box-wrapper .action-area {
+    position: relative;
+    width: 78px;
+    border-left: 1px solid rgb(230, 229, 230);
+}
+.contact-detail-pannel .send-msg-box-wrapper .input-area .msg-box .input-msg-box {
+    position: absolute;
+    width: calc(100% - 12px);
+    height: calc(100% - 7px);
+    resize: none;
+    border: 0px none;
+    background-color: transparent;
+}
+
+.contact-detail-pannel .send-msg-box-wrapper .action-area .send-message-button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 106px;
+    box-sizing: border-box;
+    width: 78px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 0px;
+    font-size: 13px;
+    border-bottom-right-radius: 3px;
+}
+

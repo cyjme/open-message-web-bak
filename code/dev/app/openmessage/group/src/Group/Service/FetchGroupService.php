@@ -5,10 +5,10 @@ use Openmessage\Group\Group\Repo\FetchGroupRepo;
 
 class FetchGroupService extends ServiceBase
 {
-    public function getAllAccIdsByAppId($appId)
+    public function getAllAccTokensByAppId($appId)
     {
         return obj(new FetchGroupRepo($this->getDmg()))
-            ->getAllAccIdsByAppId($appId);
+            ->getAllAccTokensByAppId($appId);
     }
 
     public function fetchGroupByNameAndAppId($groupName, $appId)
@@ -17,9 +17,9 @@ class FetchGroupService extends ServiceBase
             ->fetchGroupByNameAndAppId($groupName, $appId);
     }
 
-    public function getAccIdsByGroupId($groupId)
+    public function getAccTokensByGroupId($groupId)
     {
         return obj(new FetchGroupRepo($this->getDmg()))
-            ->getAccIdsByGroupId($groupId);
+            ->getAccTokensByGroupId($groupId);
     }
 }

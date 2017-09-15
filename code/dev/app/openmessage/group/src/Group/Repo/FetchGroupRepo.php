@@ -5,9 +5,9 @@ use Openmessage\Group\Group\Dto\GroupDto;
 
 class FetchGroupRepo extends RepoBase
 {
-    public function getAllAccIdsByAppId($appId)
+    public function getAllAccTokensByAppId($appId)
     {
-        return $this->cnn->select('accId')
+        return $this->cnn->select('token')
             ->from('acc')
             ->where('appId', '=', $appId)
             ->listObj();
@@ -22,9 +22,9 @@ class FetchGroupRepo extends RepoBase
             ->fetchDtoOne(GroupDto::class);
     }
 
-    public function getAccIdsByGroupId($groupId)
+    public function getAccTokensByGroupId($groupId)
     {
-        return $this->cnn->select('accId')
+        return $this->cnn->select('token')
             ->from('acc_group')
             ->where('groupId', '=', $groupId)
             ->listObj();

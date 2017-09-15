@@ -24,7 +24,7 @@ class Push extends MessageBase
 
     public function handleMsg($msg)
     {
-        $accs = $this->getAccIds($msg);
+        $accs = $this->getAccTokens($msg);
         $fds = [];
 
         foreach ($accs as $acc) {
@@ -42,26 +42,26 @@ class Push extends MessageBase
         return $msg;
     }
 
-    protected function getAccIds($msg)
+    protected function getAccTokens($msg)
     {
-        $accIds = [];
+        $accTokens = [];
         $appId = $msg->appId;
 
         if ($msg->toGroupId === 'all') {
-            $accIds[] = obj(new FetchGroupService($this->app))
-                ->getAllAccIdsByAppId($appId);
+            $accTokens[] = obj(new FetchGroupService($this->app))
+                ->getAllAccTokensByAppId($appId);
         }
 
         if ($msg->toGroupId) {
-            $accIds[] = obj(new FetchGroupService($this->app))
-                ->getAccIdsByGroupId($groupId);
+            $accTokens[] = obj(new FetchGroupService($this->app))
+                ->getAccTokensByGroupId($groupId);
         }
 
-        if ($msg->toAccId) {
-            $accIds[] = object(['accId'=>$msg->toAccId]);
+        if ($msg->toAccToken) {
+            $accTokens[] = (object)(['accToken'=>$msg->toAccToken]);
         }
 
-        return $accIds;
+        return $accTokens;
     }
 
     protected function storeMsg($msg)

@@ -8,6 +8,11 @@ $this
         'landChat',
         'Openmessage\OpenChat\Chat\Ui\LandChatController@show'
     )
+    ->getRest(
+        '/fetch-up-token',
+        'fetUpToken',
+        'Openmessage\OpenChat\Chat\Ui\LandChatController@show'
+    )
     ->getOpen(
         '/create-chat',
         'createChatByGet',

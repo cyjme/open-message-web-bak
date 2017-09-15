@@ -21,6 +21,7 @@ class Msg extends MessageBase
 
         $this->acc = new Acc($app);
         $this->push = new Push($app);
+        $this->chat = new Chat($app);
     }
 
     public function handleMsg($msg, $fd)
@@ -35,6 +36,12 @@ class Msg extends MessageBase
                 return $this->push->handleMsg($msg);
                 break;
             case 'im':
+                return $this->chat->handleMsg($msg);
+                break;
+            case 'imAction':
+                return $this->chat->handleAction($msg);
+                break;
+            case 'pushAction':
                 break;
             default:
                 break;

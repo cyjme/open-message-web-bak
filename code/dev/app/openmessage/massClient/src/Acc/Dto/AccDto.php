@@ -7,6 +7,8 @@ class AccDto extends DtoBase
     protected $userId;
     protected $token;
     protected $appId;
+    protected $name;
+    protected $avatar;
     protected $props;
     protected $status;
     protected $created;

@@ -65,8 +65,18 @@ class MsgApp extends App
         $msg = $frame->data;
         $msg = $this->msg->handleMsg($msg, $frame->fd);
 
+        var_dump($msg);
+
         if ($msg->type === "push") {
             $serv->push($frame->fd, 'ok');
+        }
+
+        if ($msg->type === "im") {
+            // $serv->push($frame->fd, 'ok');
+        }
+
+        if ($msg->type === "imAction") {
+            // $serv->push($frame->fd, 'ok');
         }
 
         foreach ($msg->fds as $fd) {
