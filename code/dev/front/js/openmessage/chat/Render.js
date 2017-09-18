@@ -11,6 +11,15 @@ export function Render(type, params) {
             dom = ChatDom.create(type, params);
             chatItem.innerHTML += dom;
             break;
+        case 'history':
+            dom = ChatDom.create('newMsg', params);
+            chatItem.innerHTML = dom + chatItem.innerHTML;
+            break;
+        case 'history-my':
+            dom = ChatDom.create('myMsg', params);
+            // chatItem.innerHTML += dom;
+            chatItem.innerHTML = dom + chatItem.innerHTML;
+            break;
         case 'myMsg':
             dom = ChatDom.create(type, params);
             chatItem.innerHTML += dom;

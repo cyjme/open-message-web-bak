@@ -7,6 +7,7 @@ class MsgDto extends DtoBase
     protected $type;
     protected $title;
     protected $content;
+    protected $contentType;
     protected $from;
     protected $to;
     protected $created;

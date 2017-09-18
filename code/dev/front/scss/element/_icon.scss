@@ -4,13 +4,13 @@
 // sass-lint:disable no-vendor-prefixes
 $icon-font-family: 'iconfont';
 @font-face {
-    font-family: 'iconfont';  /* project id 319816 */
-    src: url('//at.alicdn.com/t/font_319816_faim1rese0lwstt9.eot');
-    src: url('//at.alicdn.com/t/font_319816_faim1rese0lwstt9.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_319816_faim1rese0lwstt9.woff') format('woff'),
-    url('//at.alicdn.com/t/font_319816_faim1rese0lwstt9.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_319816_faim1rese0lwstt9.svg#iconfont') format('svg');
-  }
+  font-family: 'iconfont';  /* project id 319816 */
+  src: url('//at.alicdn.com/t/font_319816_fz0upkanq0wcow29.eot');
+  src: url('//at.alicdn.com/t/font_319816_fz0upkanq0wcow29.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_319816_fz0upkanq0wcow29.woff') format('woff'),
+  url('//at.alicdn.com/t/font_319816_fz0upkanq0wcow29.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_319816_fz0upkanq0wcow29.svg#iconfont') format('svg');
+}
 
 .icon {
     -moz-osx-font-smoothing: grayscale;
@@ -64,6 +64,10 @@ $icon: (
     tri-right: '\e8f9',
     tri-down: '\e62f',
     upload-file-chat: '\e709',
+    logo-name: '\e6f5',
+    close: '\e69a',
+    contact: '\e602',
+    chat: '\e600',
 );
 
 @each $key, $value in $icon {

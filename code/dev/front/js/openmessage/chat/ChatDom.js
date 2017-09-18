@@ -77,7 +77,7 @@ function create(type, params) {
         case 'contact':
             dom = `
                     <div class="list-item contact-item context-menu contact-item-company" acctoken="`+ params.accToken + `" id="contact-item-` + params.accToken + `">
-                        <i class="iconfont icon-delete-contact tipper-attached"></i>
+                        <i class="icon icon-close"></i>
                         <div class="avatar-wrap">
                             <div class="user-avatar normal" style="background-image: url(`+ params.avatar + `);"></div>
                         </div>

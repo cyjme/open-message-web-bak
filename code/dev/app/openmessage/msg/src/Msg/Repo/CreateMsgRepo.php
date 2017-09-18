@@ -11,12 +11,7 @@ class CreateMsgRepo extends RepoBase
         $msg->setCreated($now);
         $msg->setChanged($now);
 
-        if (!$msg->getMsgId()) {
-            $msg->setMsgId($this->cnn->zid());
-        }
-
         $this->cnn->insert('msg')
-            ->value('msgId', $msg->getMsgId())
             ->value('type', $msg->getType())
             ->value('title', $msg->getTitle())
             ->value('content', $msg->getContent())

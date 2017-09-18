@@ -50,7 +50,7 @@ class Chat extends MessageBase
         }
 
         $chatHistory = obj(new ListChatHistoryService($this->app))
-            ->list($msg->accToken, $msg->withAccToken, $msg->sinceCreated, $num);
+            ->list($msg->accToken, $msg->withAccToken, $msg->sinceId, $num);
         
         $chatHistoryArr = [];
 
@@ -59,6 +59,7 @@ class Chat extends MessageBase
             $msgItem->msgId = $item->getMsgId();
             $msgItem->type = $item->getType();
             $msgItem->content = $item->getContent();
+            $msgItem->contentType = $item->getContentType();
             $msgItem->from = $item->getFrom();
             $msgItem->to = $item->getTo();
             $msgItem->created = $item->getCreated();

@@ -5,14 +5,17 @@ import { request } from 'zjs/http/request';
 import { pageAttr } from 'zjs/html/page-attr';
 import { s } from 'zjs/s';
 import { UploaderBuilder } from 'zjs/upload/qiniu4js.js';
+import ReconnectWebsocket from './openmessage/chat/ReconnectWebsocket.js';
 
-let ws = new WebSocket("ws://" + Config.host + ":" + Config.port);
+// let ws = new WebSocket("ws://" + Config.host + ":" + Config.port);
+let ws = new ReconnectWebsocket("ws://" + Config.host + ":" + Config.port);
 let fromAccToken = pageAttr('fromAccToken');
 let toAccToken = pageAttr('toAccToken');
 console.warn('fromAccToken', fromAccToken);
 console.warn('toAccToken', toAccToken);
 let currentChatAccToken = toAccToken;
-let currentChatFirstMsgCreated = '2017-09-14 11:16:33';
+let currentChatFirstMsgId = 9999999999;
+let contactList = [];
 
 function handleClickContactList(e) {
     let dom = e.target;
@@ -76,20 +79,40 @@ function newMsg(msg) {
     scrollBottom();
 }
 
+function scrollListChatHistory() {
+    let chatLists = document.getElementById('chat-lists');
+    if (chatLists.scrollTop < 100) {
+        listChatHistory();
+
+        chatLists.removeEventListener('scroll', scrollListChatHistory);
+    }
+}
+
+function listenChatListScroll() {
+    let chatLists = document.getElementById('chat-lists');
+    chatLists.addEventListener('scroll', scrollListChatHistory);
+}
+
 function reg() {
     //点击按钮
     document.getElementById('send-button').addEventListener("click", sendMsg);
     //联系人列表
     document.getElementById('contact-lists').addEventListener("click", handleClickContactList);
+    //滚动,加载历史记录
+    listenChatListScroll();
 }
 
 function startListen() {
+    console.warn('start listen')
     let $data = {
         "type": 'login',
         "token": fromAccToken
     };
     ws.onopen = function () {
         ws.send(JSON.stringify($data));
+        setTimeout(function() {
+            listChatHistory();
+        }, 2000);
     };
     ws.onmessage = function (evt) {
         let msg = JSON.parse(evt.data);
@@ -97,8 +120,19 @@ function startListen() {
         if (msg.type == 'imAction') {
             let msgItems = JSON.parse(msg.data);
             msgItems.map(item => {
-                newMsg(item);
+                console.warn('item', item);
+                currentChatFirstMsgId = parseInt(item.msgId);
+                console.warn('ccccc',currentChatFirstMsgId);
+                if (item.from == fromAccToken) {
+                    Render('history-my', { 'toAccToken': item.to, 'name': 'chang', 'time': '20:08', 'content': item.content, 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
+                    return;
+                }
+                if(item.to == fromAccToken){
+                    Render('history', { 'toAccToken': item.from, 'name': 'chang', 'time': '20:08', 'content': item.content, 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
+                }
             })
+            //加载完成后重新注册滚动监听事件
+            listenChatListScroll();
             return;
         }
         newMsg(msg);
@@ -108,10 +142,12 @@ function startListen() {
     };
 }
 
+
+
 function landContactList() {
     request.postJson(Config.listContactListUrl, { 'accToken': fromAccToken })
         .then(data => {
-            console.warn(data)
+            console.warn('landcontactlist data',data)
             if (data) {
                 data.map(contact => {
                     console.warn('contact', contact);
@@ -142,21 +178,22 @@ function listChatHistory() {
         'actionType': 'listHistory',
         'accToken': accToken,
         'withAccToken': withAccToken,
-        'sinceCreated': currentChatFirstMsgCreated
+        'sinceId': currentChatFirstMsgId
     }
 
-    setTimeout(function () {
-        ws.send(JSON.stringify(msg));
-    }, 3000);
+    ws.send(JSON.stringify(msg));
 }
-
 
 landContactList();
 reg();
+let test = document.getElementById('chat-item-acc-598d2337asdf2');
+
+console.warn('test find chat-item',test);
+
 startListen();
+
 // Render('newMsg', { 'name': 'chang', 'time': '20:08', 'content': '我是一条新消息', 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
 // Render('myMsg', { 'name': 'chang', 'time': '20:08', 'content': '我是一条新消息', 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
-listChatHistory();
 document.getElementById('chat-text').addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
         if (e.ctrlKey) {

@@ -6,23 +6,26 @@ use Openmessage\Msg\Msg\Dto\MsgDto;
 
 class ListChatHistoryRepo extends RepoBase
 {
-    public function list($accToken, $withAccToken, $sinceCreated, $num = 10)
+    public function list($accToken, $withAccToken, $sinceId, $num)
     {
+        if($num == null){
+            $num = 10;
+        }
         $ssb = $this->cnn->select()
             ->from('msg')
             ->where('from', '=', $accToken)
             ->andWhere('to', '=', $withAccToken)
-            ->andWhere('created','<', $sinceCreated);
+            ->andWhere('msgId','<', $sinceId);
 
         $ssb->startGroup('OR')
             ->where('from', '=', $withAccToken)
             ->andWhere('to', '=', $accToken)
-            ->andWhere('created', '<', $sinceCreated)
+            ->andWhere('msgId', '<', $sinceId)
             ->endGroup();
         
         $ssb->limit($num);
 
-        $ssb->orderBy('created');
+        $ssb->orderBy('msgId','desc');
 
         return $this->DataSet($ssb, MsgDto::class);
     }

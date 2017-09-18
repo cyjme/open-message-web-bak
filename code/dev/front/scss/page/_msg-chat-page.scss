@@ -125,6 +125,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     position: relative;
 }
 
+.user-avatar.big-52 {
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    display: inline-block;
+    box-sizing: border-box;
+    background-size: cover;
+    background-clip: content-box;
+    background-position: center center;
+    border-radius: 50%;
+}
+
 .user-avatar.normal{
     background-clip: content-box;
     background-size: cover;
@@ -567,3 +583,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-bottom-right-radius: 3px;
 }
 
+.icon-logo-name{
+    font-size: 75px;
+    color: white;
+    margin-left: 40px;
+    line-height: 60px;
+}
+
+.icon-close{
+
+}
+
+.icon-chat {
+    font-size: 34px;
+}
+
+.icon-contact {
+    font-size: 26px;
+}

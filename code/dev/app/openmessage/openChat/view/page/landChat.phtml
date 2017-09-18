@@ -21,20 +21,24 @@ $pageAttr['toAccToken'] = $this->toAccToken;
 <div class="layout-container">
     <div class="layout-main">
         <div class="header">
+            <div>
+                <i class="icon icon-logo-name"></i>
+            </div>
             <div class="search-bar-wraper">
             </div>
         </div>
         <div class="body">
             <div class="menu-pannel">
                 <div class="profile">
-                <div class="user-avatar big-52 with-border" style="background-image: url('https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg');"></div>
+                    <div class="user-avatar big-52 with-border" style="background-image: url(<?php echo $this->profile->getAvatar(); ?>);">
+                    </div>
                 </div>
                 <ul class="main-menus">
                     <li class="menu-item">
-                        test
+                        <i class="icon icon-chat"></i>
                     </li>
                     <li class="menu-item">
-                        test
+                        <i class="icon icon-contact"></i>
                     </li>
                 </ul>
                 <ul class="extra-options">
@@ -45,7 +49,7 @@ $pageAttr['toAccToken'] = $this->toAccToken;
                     <div class="contact-lists-box" id="user-lists">
                         <div class="contact-lists" id="contact-lists">
                             <div class="list-item contact-item context-menu contact-item-company" accToken="">
-                                <i class="iconfont icon-delete-contact tipper-attached"></i>
+                                <i class="icon icon-close"></i>
                                 <div class="avatar-wrap">
                                     <div class="user-avatar normal" style="background-image: url(&quot;https://static.dingtalk.com/media/lALOAFF1eczIzMg_200_200.png_60x60q90.jpg&quot;);"></div>
                                 </div>
@@ -70,9 +74,7 @@ $pageAttr['toAccToken'] = $this->toAccToken;
                         </div>
                         <div class="content-pannel-body chat-box-new" id="chat-box">
                             <div class="main-chat chat-items" id="chat-lists">
-                                <div class="msg-items chat-item" id="chat-item-acc-598d2337asdf2">
 
-                                </div>
                             </div>
                         </div>
                         <div class="send-msg-box-wrapper">
