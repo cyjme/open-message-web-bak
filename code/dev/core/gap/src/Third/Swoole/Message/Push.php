@@ -32,10 +32,7 @@ class Push extends MessageBase
 
             $this->storeMsg($msg);
 
-            $fd = $this->cache->hget($acc->accId, 'fd');
-            if ($fd !== false) {
-                $fds[] = $fd;
-            }
+            $fds = json_decode($this->cache->hget($acc->accId, 'fds'), true);
         }
         $msg->fds = $fds;
 

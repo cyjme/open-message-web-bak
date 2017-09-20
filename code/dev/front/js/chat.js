@@ -178,7 +178,8 @@ function listChatHistory() {
         'actionType': 'listHistory',
         'accToken': accToken,
         'withAccToken': withAccToken,
-        'sinceId': currentChatFirstMsgId
+        'sinceId': currentChatFirstMsgId,
+        'num': 10
     }
 
     ws.send(JSON.stringify(msg));
@@ -261,4 +262,3 @@ let uploader = new UploaderBuilder()
 document.getElementById('btn-upload').addEventListener("click", function () {
     uploader.chooseFile();
 });
-

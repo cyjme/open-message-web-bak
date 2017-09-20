@@ -56,16 +56,13 @@ class MsgApp extends App
 
     public function onOpen($server, $request)
     {
-        echo "test open";
-        echo "server: handshake success with fd{$request->fd}\n";
+        echo "server: open with fd{$request->fd}\n";
     }
 
     public function onMessage($serv, $frame)
     {
         $msg = $frame->data;
         $msg = $this->msg->handleMsg($msg, $frame->fd);
-
-        var_dump($msg);
 
         if ($msg->type === "push") {
             $serv->push($frame->fd, 'ok');
@@ -86,8 +83,8 @@ class MsgApp extends App
 
     public function onClose($server, $fd)
     {
-         echo "test close";
          echo "client {$fd} closed\n";
+         $this->acc->logout($fd);
     }
 
     public function run()

@@ -33,10 +33,7 @@ class Chat extends MessageBase
 
             $this->storeMsg($msg);
 
-            $fd = $this->cache->hget($acc->accToken, 'fd');
-            if ($fd !== false) {
-                $fds[] = $fd;
-            }
+            $fds = json_decode($this->cache->hget($acc->accToken, 'fds'), true);
         }
         $msg->fds = $fds;
 
@@ -50,7 +47,7 @@ class Chat extends MessageBase
         }
 
         $chatHistory = obj(new ListChatHistoryService($this->app))
-            ->list($msg->accToken, $msg->withAccToken, $msg->sinceId, $num);
+            ->list($msg->accToken, $msg->withAccToken, $msg->sinceId, $msg->num);
         
         $chatHistoryArr = [];
 
@@ -67,16 +64,7 @@ class Chat extends MessageBase
             $chatHistoryArr[] = $msgItem;
         }
 
-        var_dump('chat History-=========================');
-        var_dump($chatHistoryArr);
-
-        $fds = [];
-
-        $fd = $this->cache->hget($msg->accToken, 'fd');
-
-        if ($fd !== false) {
-            $fds[] = $fd;
-        }
+        $fds = json_decode($this->cache->hget($msg->accToken, 'fds'), true);
 
         $msg->fds = $fds;
         $msg->data = json_encode($chatHistoryArr);

@@ -25,7 +25,33 @@ class Acc extends MessageBase
         // if ($accId === 0) {
         //     return 0;
         // }
-        $this->cache->hset($accToken, 'fd', $fd);
+        $fds = [];
+        $fds[] = $fd;
+        // $this->cache->hset($accToken, 'fd', $fd);
+        $this->cache->hset($fd, 'accToken', $accToken);
+
+        if($oldFds = $this->cache->hget($accToken, 'fds')){
+            $newFds = json_decode($oldFds, true);
+            $newFds[] = $fd;
+            $this->cache->hset($accToken, 'fds', json_encode($newFds));
+
+            return;
+        }
+        $this->cache->hset($accToken, 'fds', json_encode($fds));
+    }
+
+    public function logout($fd)
+    {
+        $accToken = $this->cache->hget($fd, 'accToken');
+        $oldFds = $this->cache->hget($accToken, 'fds');
+        $newFds = array_diff(json_decode($oldFds, true), [$fd]);
+        $this->cache->hdel($fd, 'accToken');
+        if (count($newFds)===0) {
+            $this->cache->hdel($accToken, 'fds');
+
+            return ;
+        }
+        $this->cache->hset($accToken, 'fds', json_encode($newFds));
     }
 
     protected function getAccIdByToken($token)
