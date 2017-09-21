@@ -81,7 +81,7 @@ function newMsg(msg) {
 
 function scrollListChatHistory() {
     let chatLists = document.getElementById('chat-lists');
-    if (chatLists.scrollTop < 100) {
+    if (chatLists.scrollTop < 50) {
         listChatHistory();
 
         chatLists.removeEventListener('scroll', scrollListChatHistory);
@@ -124,11 +124,11 @@ function startListen() {
                 currentChatFirstMsgId = parseInt(item.msgId);
                 console.warn('ccccc',currentChatFirstMsgId);
                 if (item.from == fromAccToken) {
-                    Render('history-my', { 'toAccToken': item.to, 'name': 'chang', 'time': '20:08', 'content': item.content, 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
+                    Render('history-my', { 'toAccToken': item.to, 'name': 'chang', 'time': '20:08', 'content': item.content, 'contentType': item.contentType, 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
                     return;
                 }
                 if(item.to == fromAccToken){
-                    Render('history', { 'toAccToken': item.from, 'name': 'chang', 'time': '20:08', 'content': item.content, 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
+                    Render('history', { 'toAccToken': item.from, 'name': 'chang', 'time': '20:08', 'content': item.content, 'contentType': item.contentType, 'avatar': 'https://static.dingtalk.com/media/lADOpGV_jc0Bvc0Bvg_446_445.jpg_60x60q90.jpg' });
                 }
             })
             //加载完成后重新注册滚动监听事件

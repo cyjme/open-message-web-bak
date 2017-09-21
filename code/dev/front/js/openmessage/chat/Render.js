@@ -30,6 +30,7 @@ export function Render(type, params) {
             break;
         case 'chat':
             dom = ChatDom.create(type, params);
+            console.warn('111111111111',params);
             chatLists.innerHTML += dom;
             break;
         default:

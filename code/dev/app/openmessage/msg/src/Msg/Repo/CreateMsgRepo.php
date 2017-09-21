@@ -15,6 +15,7 @@ class CreateMsgRepo extends RepoBase
             ->value('type', $msg->getType())
             ->value('title', $msg->getTitle())
             ->value('content', $msg->getContent())
+            ->value('contentType', $msg->getContentType())
             ->value('from', $msg->getFrom())
             ->value('to', $msg->getTo())
             ->value('created', $msg->getCreated())

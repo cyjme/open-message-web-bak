@@ -90,6 +90,7 @@ class Chat extends MessageBase
             "type" => 'im',
             "from" => $msg->fromAccToken,
             "content" => $msg->content,
+            "contentType" => $msg->contentType,
         ]);
         obj(new CreateMsgService($this->app))
             ->create($storeMsg);

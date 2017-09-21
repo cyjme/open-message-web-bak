@@ -3,6 +3,7 @@ function create(type, params) {
     let content = '';
     switch (type) {
         case 'newMsg':
+            console.warn('params', params.contentType);
             switch(params.contentType){
                 case 'img':
                     content = `<img src="`+params.content+`?imageView2/2/w/300" />`
